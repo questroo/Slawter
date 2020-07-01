@@ -25,7 +25,7 @@ namespace Assets.Scripts.Enemy_Script.States
         {
             if(base.EnterState())
             {
-
+                //patrolPoints = enem
             }
             return base.EnterState();
         }
