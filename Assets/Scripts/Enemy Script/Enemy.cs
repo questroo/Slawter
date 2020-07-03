@@ -13,26 +13,17 @@ namespace Assets.Scripts.Enemy_Script
 
     public class Enemy : MonoBehaviour
     {
+        [SerializeField]
+        EnemyPatrolPoint[] patrolPoints;
+
         NavMeshAgent navMeshAgent;
         FiniteStateMachine finiteStateMachine;
 
-        [SerializeField]
-        EnemyPatrolPoint[] patrolPoints;
 
         public void Awake()
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>();
             finiteStateMachine = this.GetComponent<FiniteStateMachine>();
-        }
-
-        public void Start()
-        {
-            
-        }
-
-        public void Update()
-        {
-            
         }
 
         public EnemyPatrolPoint[] PatrolPoints
