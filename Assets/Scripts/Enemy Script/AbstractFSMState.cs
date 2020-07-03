@@ -12,25 +12,44 @@ public enum ExecutionState
     TERMINATED,
 };
 
+public enum FSMStateType
+{
+    IDLE,
+    PATROL,
+    CHASE,
+    EXPLODE,
+    ALERT,
+};
+
 public abstract class AbstractFSMState : ScriptableObject
 {
     protected NavMeshAgent _navMeshAgent;
     protected Enemy _enemy;
+    protected FiniteStateMachine _fsm;
+    protected GameObject player;
 
     public ExecutionState executionState { get; protected set; }
+    public FSMStateType StateType { get; protected set; }
+    public bool EnteredState { get; protected set; }
 
     public virtual void OnEnable()
     {
         executionState = ExecutionState.NONE;
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 
     //A: Enter states successfully
     public virtual bool EnterState()
     {
-        bool success = true;
+        bool successNavMesh = true;
+        bool successEnemy = true;
+
         executionState = ExecutionState.ACTIVE;
-        success = (_navMeshAgent != null);
-        return success;
+
+        successNavMesh = (_navMeshAgent != null);
+        successEnemy = (_enemy != null);
+
+        return successEnemy & successNavMesh;
     }
 
     //A: Updates current state in the state machine
@@ -52,11 +71,19 @@ public abstract class AbstractFSMState : ScriptableObject
         }
     }
 
+    public virtual void SetExecutingFSM(FiniteStateMachine fsm)
+    {
+        if (fsm != null)
+        {
+            _fsm = fsm;
+        }
+    }
+
     public virtual void SetExecutingEnemy(Enemy enemy)
     {
         if(enemy != null)
         {
-            //_enemy
+            _enemy = enemy;
         }
     }
 }

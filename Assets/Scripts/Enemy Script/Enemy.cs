@@ -13,26 +13,22 @@ namespace Assets.Scripts.Enemy_Script
 
     public class Enemy : MonoBehaviour
     {
-        NavMeshAgent navMeshAgent;
-        FiniteStateMachine finiteStateMachine;
-
+        // Range
+        public float chaseRange;
+        public float explosionRange;
+        public float alertRange;
+        
         [SerializeField]
         EnemyPatrolPoint[] patrolPoints;
 
+        NavMeshAgent navMeshAgent;
+        FiniteStateMachine finiteStateMachine;
+
+        
         public void Awake()
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>();
             finiteStateMachine = this.GetComponent<FiniteStateMachine>();
-        }
-
-        public void Start()
-        {
-            
-        }
-
-        public void Update()
-        {
-            
         }
 
         public EnemyPatrolPoint[] PatrolPoints
