@@ -26,6 +26,7 @@ public abstract class AbstractFSMState : ScriptableObject
     protected NavMeshAgent _navMeshAgent;
     protected Enemy _enemy;
     protected FiniteStateMachine _fsm;
+    protected GameObject player;
 
     public ExecutionState executionState { get; protected set; }
     public FSMStateType StateType { get; protected set; }
@@ -34,6 +35,7 @@ public abstract class AbstractFSMState : ScriptableObject
     public virtual void OnEnable()
     {
         executionState = ExecutionState.NONE;
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 
     //A: Enter states successfully
