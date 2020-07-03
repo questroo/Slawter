@@ -75,8 +75,13 @@ public class GunSystem : MonoBehaviour
         }
 
         // Graphics
-        //Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
-        //Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+        var bulletImpactInstance = Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
+        var muzzleFlashInstance = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+
+        muzzleFlashInstance.transform.parent = gameObject.transform;
+
+        Destroy(bulletImpactInstance, 0.6f);
+        Destroy(muzzleFlashInstance, 0.16f);
 
         --bulletsLeft;
         --bulletsShot;
