@@ -25,7 +25,7 @@ namespace Assets.Scripts.Enemy_Script.States
         {
             EnteredState = base.EnterState();
 
-            if(EnteredState)
+            if (EnteredState)
             {
                 Debug.Log("ENTERED CHASE STATE");
             }
@@ -35,20 +35,23 @@ namespace Assets.Scripts.Enemy_Script.States
 
         public override void UpdateState()
         {
-            if(EnteredState)
+            if (EnteredState)
             {
                 float distance = Vector3.Distance(player.transform.position, _navMeshAgent.transform.position);
-                
-                if(distance >= _enemy.chaseRange)
+
+                if (distance >= _enemy.chaseRange)
                 {
-                    _fsm.EnterState(FSMStateType.ALERT);
+                    _fsm.EnterState(FSMStateType.IDLE);
                     return;
                 }
-                else if(distance <= _enemy.chaseRange)
+                else if(distance <= _enemy.explosionRange)
                 {
-                    _navMeshAgent.SetDestination(player.transform.position);
+                    _fsm.EnterState(FSMStateType.EXPLODE);
+                    return;
                 }
-                
+                _navMeshAgent.SetDestination(player.transform.position);
+
+
             }
         }
     }

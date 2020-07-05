@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8eb8dce889214449300c76e0d6770f, type: 3}
-  m_Name: IdleState
+  m_Script: {fileID: 11500000, guid: e71faf833597cb84582e1574c830b188, type: 3}
+  m_Name: ExplosionState
   m_EditorClassIdentifier: 
-  _idleDruation: 1

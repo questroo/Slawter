@@ -62,6 +62,11 @@ namespace Assets.Scripts.Enemy_Script.States
                 {
                     _fsm.EnterState(FSMStateType.IDLE);
                 }
+                else if(Vector3.Distance(_navMeshAgent.transform.position, player.transform.position) <= _enemy.chaseRange)
+                {
+                    _fsm.EnterState(FSMStateType.CHASE);
+                }
+                
             }
         }
 

@@ -17,18 +17,23 @@ namespace Assets.Scripts.Enemy_Script
         public float chaseRange;
         public float explosionRange;
         public float alertRange;
-        
+        public float explosionDamage;
+
         [SerializeField]
         EnemyPatrolPoint[] patrolPoints;
 
         NavMeshAgent navMeshAgent;
         FiniteStateMachine finiteStateMachine;
 
+        [SerializeField]
+        private Health playerHealth;
         
+
         public void Awake()
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>();
             finiteStateMachine = this.GetComponent<FiniteStateMachine>();
+            playerHealth = GetComponent<Health>();
         }
 
         public EnemyPatrolPoint[] PatrolPoints
@@ -37,6 +42,21 @@ namespace Assets.Scripts.Enemy_Script
             {
                 return patrolPoints;
             }
+        }
+
+        public Health PlayerHealth()
+        {
+            return playerHealth;
+        }
+
+        public void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, chaseRange);
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, explosionRange);
+
         }
     }
 }
