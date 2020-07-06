@@ -66,11 +66,10 @@ public class GunSystem : MonoBehaviour
         // Raycast
         if(Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out rayHit, range, whatIsEnemy))
         {
-            Debug.Log(rayHit.collider.name);
-
-            if(rayHit.collider.CompareTag("Enemy"))
+            if(rayHit.collider.transform.parent.CompareTag("Enemy"))
             {
-                rayHit.collider.GetComponent<EnemyHealth>().TakeDamage(damage);
+                Debug.Log("EnemyFound");
+                rayHit.collider.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
             }
         }
 
