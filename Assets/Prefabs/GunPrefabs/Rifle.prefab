@@ -125,14 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a63806f7adef7a448d3e5d92576712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  timeBetweenShooting: 0.02
-  range: 100
-  reloadTime: 0.6
-  timeBetweenShots: 0.02
-  magazineSize: 16
+  damage: 16
+  timeBetweenShooting: 0.2
+  range: 150
+  reloadTime: 1.1
+  timeBetweenShots: 0.2
+  magazineSize: 32
   bulletsPerTap: 1
-  allowButtonHold: 0
+  allowButtonHold: 1
   fpsCamera: {fileID: 0}
   attackPoint: {fileID: 398638723364884343}
   whatIsEnemy:

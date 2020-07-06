@@ -8,7 +8,9 @@ public class WeaponSwitching : MonoBehaviour
 
     [SerializeField]
     GameObject rifle;   // 1
+    [SerializeField]
     GameObject sniper;  // 2
+    [SerializeField]
     GameObject handgun; // 3
 
     private void Start()
