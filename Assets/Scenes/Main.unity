@@ -214,12 +214,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160813058}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &519150775 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3531508714812370044, guid: f8916eea45ed83f44bace6f1b2ba97b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8025514254043885696}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,12 +539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee23b0de83488a44a3813ea39ac8b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1170757154 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7887912297092976644, guid: f8916eea45ed83f44bace6f1b2ba97b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8025514254043885696}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1679359684
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,15 +941,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5821011569183727393, guid: f8916eea45ed83f44bace6f1b2ba97b5,
-        type: 3}
-      propertyPath: sniper
-      value: 
-      objectReference: {fileID: 519150775}
-    - target: {fileID: 5821011569183727393, guid: f8916eea45ed83f44bace6f1b2ba97b5,
-        type: 3}
-      propertyPath: handgun
-      value: 
-      objectReference: {fileID: 1170757154}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8916eea45ed83f44bace6f1b2ba97b5, type: 3}
