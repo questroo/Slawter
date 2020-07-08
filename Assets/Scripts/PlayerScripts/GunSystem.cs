@@ -7,7 +7,7 @@ public class GunSystem : MonoBehaviour
 {
     // Gun stats
     public float damage, timeBetweenShooting, range, reloadTime, timeBetweenShots;
-    //public float spread;
+    public float spread;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     private int bulletsLeft, bulletsShot;
@@ -63,8 +63,14 @@ public class GunSystem : MonoBehaviour
     {
         readyToShoot = false;
 
+        // Spread
+        float x = Random.Range(-spread, spread);
+        float y = Random.Range(-spread, spread);
+
+        Vector3 direction = fpsCamera.transform.forward + new Vector3(x, y, 0);
+
         // Raycast
-        if(Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
             if(rayHit.collider.transform.parent.CompareTag("Enemy"))
             {
