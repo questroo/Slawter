@@ -10,24 +10,15 @@ public class MeleeAttack : MonoBehaviour
     public Collider meleeCollider;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             meleeAnimator.SetTrigger("MeleeAttack");
         }
     }
 
-    public void TriggerBoxEnable()
-    {
-        meleeCollider.enabled = true;
-    }
-
-    public void TriggerBoxDisable()
-    {
-        meleeCollider.enabled = false;
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<EnemyHealth>())
+        if (other.GetComponent<EnemyHealth>())
         {
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
         }

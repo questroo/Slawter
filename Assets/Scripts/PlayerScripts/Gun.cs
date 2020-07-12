@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GunSystem : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     // Gun stats
     public float damage, timeBetweenShooting, range, reloadTime, timeBetweenShots;
@@ -11,6 +11,7 @@ public class GunSystem : MonoBehaviour
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     private int bulletsLeft, bulletsShot;
+    public AmmoType ammoType;
 
     // Bools
     private bool shooting, readyToShoot, reloading;
@@ -21,12 +22,14 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     public TextMeshProUGUI text;
+    private AmmoInventory ammoInventory;
 
     // Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
 
     private void Awake()
     {
+        ammoInventory = GetComponentInParent<AmmoInventory>();
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -34,7 +37,7 @@ public class GunSystem : MonoBehaviour
     {
         MyInput();
 
-        text.SetText(bulletsLeft + " / " + magazineSize);
+        text.SetText(bulletsLeft + " / " + ammoInventory.GetCurrentAmmoAmount(ammoType));
     }
     private void MyInput()
     {
@@ -49,11 +52,18 @@ public class GunSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
         {
-            Reload();
+            if (ammoInventory.GetCurrentAmmoAmount(ammoType) > 0)
+            {
+                Reload();
+            }
+            else
+            {
+                Debug.Log("You have no ammo left");
+            }
         }
 
         // Shoot
-        if(readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             bulletsShot = bulletsPerTap;
             Shoot();
@@ -70,13 +80,10 @@ public class GunSystem : MonoBehaviour
         Vector3 direction = fpsCamera.transform.forward + new Vector3(x, y, 0);
 
         // Raycast
-        if(Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
+        if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            if(rayHit.collider.transform.parent.CompareTag("Enemy"))
-            {
-                Debug.Log("EnemyFound");
-                rayHit.collider.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
-            }
+            Debug.Log("EnemyFound");
+            rayHit.collider.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
         }
 
         // Graphics
@@ -92,7 +99,7 @@ public class GunSystem : MonoBehaviour
         --bulletsShot;
         Invoke("ResetShot", timeBetweenShooting);
 
-        if(bulletsShot > 0 && bulletsLeft > 0)
+        if (bulletsShot > 0 && bulletsLeft > 0)
         {
             Invoke("Shoot", timeBetweenShots);
         }
@@ -111,7 +118,13 @@ public class GunSystem : MonoBehaviour
 
     private void ReloadFinished()
     {
-        bulletsLeft = magazineSize;
+        int bulletsNeeded = magazineSize - bulletsLeft;
+        int bulletsRecieved = 0;
+        if (ammoInventory.GetCurrentAmmoAmount(ammoType) > 0)
+        {
+            bulletsRecieved = ammoInventory.AskForAmmoOfType(bulletsNeeded, ammoType);
+        }
+        bulletsLeft += bulletsRecieved;
         reloading = false;
     }
 }
