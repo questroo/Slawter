@@ -18,9 +18,11 @@ public class MeleeAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyHealth>())
+        if (Input.GetKeyDown(KeyCode.V))
+             //&& other.GetComponent<EnemyHealth>()
         {
-            other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Debug.Log(other.name);
+            //other.GetComponent<EnemyHealth>().TakeDamage(damage);
         }
     }
 }

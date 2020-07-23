@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        // needs to be looked at
         verticalDirection -= gravity * Time.deltaTime;
 
         direction.y = verticalDirection;

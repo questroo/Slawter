@@ -83,7 +83,7 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
             Debug.Log("EnemyFound");
-            rayHit.collider.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
+            rayHit.collider.GetComponent<EnemyHealth>().TakeDamage(damage);
         }
 
         // Graphics
