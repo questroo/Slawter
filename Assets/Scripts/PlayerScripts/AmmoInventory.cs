@@ -6,13 +6,17 @@ public enum AmmoType
 {
     Pistol,
     Shotgun,
-    Rifle
+    Rifle,
+    Sniper,
+    GrenadeLauncher
 }
 public class AmmoInventory : MonoBehaviour
 {
     private int currentPistolAmmo = 24;
     private int currentShotgunAmmo = 8;
     private int currentRifleAmmo = 40;
+    private int currentSniperAmmo = 7;
+    private int currentGrenadeLauncherAmmo = 0;
 
     public int CurrentPistolAmmo
     {

@@ -33,9 +33,10 @@ public class PlayerMovement : MonoBehaviour
                 verticalDirection = jumpForce;
             }
         }
-
-        // needs to be looked at
-        verticalDirection -= gravity * Time.deltaTime;
+        else
+        {
+            verticalDirection -= gravity * Time.deltaTime;
+        }
 
         direction.y = verticalDirection;
 
