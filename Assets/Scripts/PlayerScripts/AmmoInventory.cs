@@ -51,6 +51,17 @@ public class AmmoInventory : MonoBehaviour
             currentRifleAmmo = value;
         }
     }
+    public int CurrentSniperAmmo
+    {
+        get
+        {
+            return currentSniperAmmo;
+        }
+        set
+        {
+            currentSniperAmmo = value;
+        }
+    }
 
     public void AddAmmoOfType(int amount, AmmoType ammoType)
     {
@@ -64,6 +75,9 @@ public class AmmoInventory : MonoBehaviour
                 break;
             case AmmoType.Rifle:
                 CurrentRifleAmmo += amount;
+                break;
+            case AmmoType.Sniper:
+                CurrentSniperAmmo += amount;
                 break;
             default:
                 break;
@@ -109,6 +123,18 @@ public class AmmoInventory : MonoBehaviour
                     CurrentRifleAmmo = 0;
                     return remainder;
                 }
+            case AmmoType.Sniper:
+                if (amount <= CurrentSniperAmmo)
+                {
+                    CurrentSniperAmmo = CurrentSniperAmmo - amount < 0 ? 0 : CurrentSniperAmmo - amount;
+                    return amount;
+                }
+                else
+                {
+                    int remainder = CurrentSniperAmmo;
+                    CurrentSniperAmmo = 0;
+                    return remainder;
+                }
             default:
                 return 0;
         }
@@ -122,7 +148,9 @@ public class AmmoInventory : MonoBehaviour
             case AmmoType.Shotgun:
                 return CurrentShotgunAmmo;
             case AmmoType.Rifle:
-                return currentRifleAmmo;
+                return CurrentRifleAmmo;
+            case AmmoType.Sniper:
+                return CurrentSniperAmmo;
             default:
                 return 0;
         }

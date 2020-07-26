@@ -73,6 +73,9 @@ public class Gun : MonoBehaviour
     {
         readyToShoot = false;
 
+        // Play the animation for shooting
+        GetComponentInChildren<Animator>().SetTrigger("Shoot");
+
         // Spread
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
@@ -113,6 +116,7 @@ public class Gun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        GetComponentInChildren<Animator>().SetBool("Reloading", true);
         Invoke("ReloadFinished", reloadTime);
     }
 
@@ -126,5 +130,6 @@ public class Gun : MonoBehaviour
         }
         bulletsLeft += bulletsRecieved;
         reloading = false;
+        GetComponentInChildren<Animator>().SetBool("Reloading", false);
     }
 }
