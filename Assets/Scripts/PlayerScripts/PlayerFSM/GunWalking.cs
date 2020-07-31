@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunIdle : GunStateBase
+public class GunWalking : GunStateBase
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,9 +13,14 @@ public class GunIdle : GunStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(GetPlayerMovement(animator).walking)
+        //if(GetPlayerMovement(animator).sprinting)
+        //{
+        //    animator.SetBool("Sprinting", true);
+        //    animator.SetBool("Walking", false);
+        //}
+        if(!GetPlayerMovement(animator).walking)
         {
-            animator.SetBool("Walking", true);
+            animator.SetBool("Walking", false);
         }
     }
 

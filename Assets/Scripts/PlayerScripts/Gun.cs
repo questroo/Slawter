@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     public bool allowButtonHold;
     private int bulletsLeft, bulletsShot;
     public AmmoType ammoType;
-
+    public WeaponType weaponType;
     // Bools
     private bool shooting, readyToShoot, reloading;
 
@@ -85,7 +85,6 @@ public class Gun : MonoBehaviour
         // Raycast
         if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            Debug.Log("EnemyFound");
             rayHit.collider.GetComponent<EnemyHealth>().TakeDamage(damage);
         }
 

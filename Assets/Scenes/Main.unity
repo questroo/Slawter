@@ -1106,6 +1106,12 @@ PrefabInstance:
       propertyPath: reloadTime
       value: 4.167
       objectReference: {fileID: 0}
+    - target: {fileID: 1782373908959914627, guid: f8916eea45ed83f44bace6f1b2ba97b5,
+        type: 3}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cdc0bcac5f65c940825451b3eb74beb,
+        type: 2}
     - target: {fileID: 3103803186305125286, guid: f8916eea45ed83f44bace6f1b2ba97b5,
         type: 3}
       propertyPath: reloadTime
@@ -1121,6 +1127,12 @@ PrefabInstance:
       propertyPath: timeBetweenShots
       value: 0.167
       objectReference: {fileID: 0}
+    - target: {fileID: 3103803186305125286, guid: f8916eea45ed83f44bace6f1b2ba97b5,
+        type: 3}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11400000, guid: f0d843f1bdde46d43a800a8676e474c1,
+        type: 2}
     - target: {fileID: 3760985228301522704, guid: f8916eea45ed83f44bace6f1b2ba97b5,
         type: 3}
       propertyPath: m_IsActive
@@ -1141,6 +1153,12 @@ PrefabInstance:
       propertyPath: timeBetweenShots
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4754264030086180247, guid: f8916eea45ed83f44bace6f1b2ba97b5,
+        type: 3}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11400000, guid: fe7f716dc48deeb4b8b4800413d9f7da,
+        type: 2}
     - target: {fileID: 4754264030755498350, guid: f8916eea45ed83f44bace6f1b2ba97b5,
         type: 3}
       propertyPath: m_LocalPosition.x

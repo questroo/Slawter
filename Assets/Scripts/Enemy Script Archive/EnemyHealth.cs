@@ -31,6 +31,6 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
 
         }
-        Debug.Log("Health: " + currentHealth);
+        //Debug.Log("Health: " + currentHealth);
     }
 }

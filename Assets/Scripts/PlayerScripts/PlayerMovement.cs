@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce = 10.0f;
     [SerializeField]
     private float gravity = -9.81f;
+    // Sprinting doubles the speed
+    [SerializeField]
+    private float sprintSpeed = 2.0f;
+
+    public bool walking = false;
+    public bool sprinting = false;
 
     private CharacterController controller;
 
@@ -25,6 +31,22 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        if((x != 0 || z != 0) && !sprinting)
+        {
+            walking = true;
+        }
+        else
+        {
+            walking = false;
+        }
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            sprinting = true;
+        }
+        else
+        {
+            sprinting = false;
+        }
         Vector3 direction = transform.right * x + transform.forward * z;
         if (controller.isGrounded)
         {
@@ -40,6 +62,16 @@ public class PlayerMovement : MonoBehaviour
 
         direction.y = verticalDirection;
 
-        controller.Move(direction * moveSpeed * Time.deltaTime);
+        if (sprinting && z > 0)
+        {
+            GetComponentInChildren<Animator>().SetBool("Sprinting", true);
+            direction.z *= sprintSpeed;
+            controller.Move(direction * moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetBool("Sprinting", false);
+            controller.Move(direction * moveSpeed * Time.deltaTime);
+        }
     }
 }
