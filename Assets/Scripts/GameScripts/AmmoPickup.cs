@@ -11,6 +11,6 @@ public class AmmoPickup : Pickup
     {
         base.PickedUp();
 
-        GameObject.FindGameObjectWithTag("Player").GetComponent<AmmoInventory>().AddAmmoOfType(amount, ammoType);
+        GetPlayer().GetComponent<AmmoInventory>().AddAmmoOfType(amount, ammoType);
     }
 }

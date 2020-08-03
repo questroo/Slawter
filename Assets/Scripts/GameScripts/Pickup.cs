@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         PickedUp();
         Destroy(gameObject);
@@ -12,5 +12,9 @@ public class Pickup : MonoBehaviour
     public virtual void PickedUp()
     {
         Debug.Log("Picked up the item");
+    }
+    public GameObject GetPlayer()
+    {
+        return GameObject.FindGameObjectWithTag("Player");
     }
 }

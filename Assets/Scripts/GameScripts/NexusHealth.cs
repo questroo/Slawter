@@ -1,25 +1,24 @@
 ﻿using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class NexusHealth : MonoBehaviour
 {
 
     public float maxHealth = 255.0f;
     private float currentHealth;
-    public PlayerHealthUI playerHealthUI;
+    public NexusHealthUI nexusHealthUI;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        playerHealthUI.SetHealth(maxHealth);
+        nexusHealthUI.SetMaxHealth(maxHealth);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            currentHealth -= 15.0f;
-            playerHealthUI.SetHealth(currentHealth);
+            TakeDamage(30.0f);
         }
     }
 
@@ -31,7 +30,7 @@ public class Health : MonoBehaviour
             currentHealth = 0.0f;
             Die();
         }
-        playerHealthUI.SetHealth(currentHealth);
+        nexusHealthUI.SetHealth(currentHealth);
     }
 
     private void Die()
@@ -42,16 +41,5 @@ public class Health : MonoBehaviour
     public float GetCurrentHealth()
     {
         return currentHealth;
-    }
-
-    public float GetPlayerMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public void Heal(float healAmount)
-    {
-        currentHealth = currentHealth + healAmount > maxHealth ? maxHealth : currentHealth + healAmount;
-        playerHealthUI.SetHealth(currentHealth);
     }
 }

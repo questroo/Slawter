@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         {
             walking = false;
         }
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) && controller.isGrounded)
         {
             sprinting = true;
         }
@@ -65,8 +65,7 @@ public class PlayerMovement : MonoBehaviour
         if (sprinting && z > 0)
         {
             GetComponentInChildren<Animator>().SetBool("Sprinting", true);
-            direction.z *= sprintSpeed;
-            controller.Move(direction * moveSpeed * Time.deltaTime);
+            controller.Move(direction * moveSpeed * sprintSpeed * Time.deltaTime);
         }
         else
         {

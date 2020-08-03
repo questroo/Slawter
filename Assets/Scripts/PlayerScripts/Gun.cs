@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     private int bulletsLeft, bulletsShot;
     public AmmoType ammoType;
     public WeaponType weaponType;
+    private bool spendBullets = true;
     // Bools
     private bool shooting, readyToShoot, reloading;
 
@@ -22,6 +23,7 @@ public class Gun : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     public TextMeshProUGUI text;
+    public LineRenderer bulletTrail;
     private AmmoInventory ammoInventory;
 
     // Graphics
@@ -85,20 +87,25 @@ public class Gun : MonoBehaviour
         // Raycast
         if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            rayHit.collider.GetComponent<EnemyHealth>().TakeDamage(damage);
+            //rayHit.collider.GetComponent<EnemyHealth>().TakeDamage(damage);
+            SpawnBulletTrail(rayHit.point);
         }
 
         // Graphics
         var bulletImpactInstance = Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
         var muzzleFlashInstance = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
+
         muzzleFlashInstance.transform.parent = gameObject.transform;
 
         Destroy(bulletImpactInstance, 0.6f);
-        Destroy(muzzleFlashInstance, 0.16f);
+        Destroy(muzzleFlashInstance, 0.1f);
 
-        --bulletsLeft;
-        --bulletsShot;
+        if (spendBullets)
+        {
+            --bulletsLeft;
+            --bulletsShot;
+        }
         Invoke("ResetShot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0)
@@ -130,5 +137,29 @@ public class Gun : MonoBehaviour
         bulletsLeft += bulletsRecieved;
         reloading = false;
         GetComponentInChildren<Animator>().SetBool("Reloading", false);
+    }
+
+    private void SpawnBulletTrail(Vector3 hitPoint)
+    {
+        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, attackPoint.position, Quaternion.identity);
+
+        LineRenderer lineRenderer = bulletTrailEffect.GetComponent<LineRenderer>();
+
+        lineRenderer.SetPosition(0, attackPoint.position);
+        lineRenderer.SetPosition(1, hitPoint);
+
+        Destroy(bulletTrailEffect, 0.1f);
+    }
+
+    public void TurnOnUnlimitedAmmo(float duration)
+    {
+        spendBullets = false;
+
+        Invoke("TurnOffUnlimitedAmmo", duration);
+    }
+    
+    public void TurnOffUnlimitedAmmo()
+    {
+        spendBullets = true;
     }
 }
