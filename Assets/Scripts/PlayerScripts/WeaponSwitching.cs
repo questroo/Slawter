@@ -6,12 +6,9 @@ public class WeaponSwitching : MonoBehaviour
 {
     int weaponSelected = 3;
 
-    [SerializeField]
-    GameObject rifle;   // 1
-    [SerializeField]
-    GameObject sniper;  // 2
-    [SerializeField]
-    GameObject handgun; // 3
+    public GameObject rifle;   // 1
+    public GameObject sniper;  // 2
+    public GameObject handgun; // 3
 
     private void Start()
     {

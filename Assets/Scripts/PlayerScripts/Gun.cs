@@ -87,7 +87,11 @@ public class Gun : MonoBehaviour
         // Raycast
         if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            //rayHit.collider.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Enemy enemy = rayHit.collider.GetComponent<Enemy>();
+            if (enemy)
+            {
+                enemy.TakeDamage(damage);
+            }
             SpawnBulletTrail(rayHit.point);
         }
 
@@ -157,7 +161,7 @@ public class Gun : MonoBehaviour
 
         Invoke("TurnOffUnlimitedAmmo", duration);
     }
-    
+
     public void TurnOffUnlimitedAmmo()
     {
         spendBullets = true;

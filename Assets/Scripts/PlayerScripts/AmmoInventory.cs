@@ -62,6 +62,17 @@ public class AmmoInventory : MonoBehaviour
             currentSniperAmmo = value;
         }
     }
+    public int CurrentGrenadeLauncherAmmo
+    {
+        get
+        {
+            return currentGrenadeLauncherAmmo;
+        }
+        set
+        {
+            currentGrenadeLauncherAmmo = value;
+        }
+    }
 
     public void AddAmmoOfType(int amount, AmmoType ammoType)
     {
