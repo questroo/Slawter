@@ -18,6 +18,7 @@ public class ChasePlayerState : BaseState
     {
         if (enemy.GetHP() <= 0.0f)
         {
+            enemy.GetComponent<Collider>().enabled = false;
             navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
             return typeof(DeathState);

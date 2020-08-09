@@ -21,6 +21,7 @@ public class FindNexusState : BaseState
         animator.SetBool("Running", true);
         if (enemy.GetHP() <= 0.0f)
         {
+            enemy.GetComponent<Collider>().enabled = false;
             navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
             return typeof(DeathState);

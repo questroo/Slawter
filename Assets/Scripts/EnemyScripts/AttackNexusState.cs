@@ -19,6 +19,7 @@ public class AttackNexusState : BaseState
     {
         if(enemy.GetHP() <= 0.0f)
         {
+            enemy.GetComponent<Collider>().enabled = false;
             enemy.SetTarget(null);
             navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
