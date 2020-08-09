@@ -2,12 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     public HP hp;
     private float currentHP;
     public EnemyAIRanges ranges;
+    public EnemyDamage enemyDamage;
+    public LineRenderer bulletTrail;
+    public float attackRate = 0.5f;
+    public Transform shootFromPosition;
 
     [SerializeField] private LayerMask layerMask;
 
@@ -55,8 +60,54 @@ public class Enemy : MonoBehaviour
     public void SetTarget(Transform target)
     {
         Target = target;
+        if(Target)
+        {
+            InvokeRepeating("Attack", attackRate, attackRate);
+        }
+        else
+        {
+            CancelInvoke("Attack");
+        }
     }
 
+    public void Attack()
+    {
+        RaycastHit rayHit;
+
+        if (Physics.Raycast(shootFromPosition.position, GetRandomDirectionToTargetFromShootPosition(), out rayHit, ranges.attackRange))
+        {
+            var player = rayHit.collider.GetComponent<Health>();
+            var nexus = rayHit.collider.GetComponent<NexusHealth>();
+
+            if(player)
+            {
+                player.TakeDamage(enemyDamage.damage);
+            }
+            if(nexus)
+            {
+                nexus.TakeDamage(enemyDamage.damage);
+            }
+            SpawnBulletTrail(rayHit.point);
+        }
+    }
+
+    private Vector3 GetRandomDirectionToTargetFromShootPosition()
+    {
+        var randomDir = ExtensionMethods.GetRandomOffsetedVectorFromPoint(Target.position, 2.0f);
+        return randomDir - shootFromPosition.position;
+    }
+
+    private void SpawnBulletTrail(Vector3 hitPoint)
+    {
+        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, shootFromPosition.position, Quaternion.identity);
+
+        LineRenderer lineRenderer = bulletTrailEffect.GetComponent<LineRenderer>();
+
+        lineRenderer.SetPosition(0, shootFromPosition.position);
+        lineRenderer.SetPosition(1, hitPoint);
+
+        Destroy(bulletTrailEffect, 0.1f);
+    }
     private void Die()
     {
         //Play Death animation and stuff

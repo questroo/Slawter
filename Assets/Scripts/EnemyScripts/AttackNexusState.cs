@@ -7,6 +7,7 @@ public class AttackNexusState : BaseState
     private NavMeshAgent navMeshAgent => gameObject.GetComponent<NavMeshAgent>();
     private readonly LayerMask layerMask = LayerMask.NameToLayer("Enemy");
     private Enemy enemy;
+    
 
 
     public AttackNexusState(Enemy enemy) : base(enemy.gameObject)
@@ -18,10 +19,11 @@ public class AttackNexusState : BaseState
     {
         if(enemy.GetHP() <= 0.0f)
         {
+            enemy.SetTarget(null);
+            navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
-
         return typeof(AttackNexusState);
     }
 }

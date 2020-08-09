@@ -18,11 +18,13 @@ public class ChasePlayerState : BaseState
     {
         if (enemy.GetHP() <= 0.0f)
         {
+            navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
         if (Vector3.Distance(transform.position, player.transform.position) < enemy.ranges.attackRange)
         {
+            enemy.SetTarget(player.transform);
             navMeshAgent.isStopped = true;
             animator.SetBool("Running", false);
             animator.SetBool("Shooting", true);

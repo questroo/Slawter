@@ -21,11 +21,13 @@ public class FindNexusState : BaseState
         animator.SetBool("Running", true);
         if (enemy.GetHP() <= 0.0f)
         {
+            navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
         if (Vector3.Distance(transform.position, navMeshAgent.destination) < enemy.ranges.attackRange)
         {
+            enemy.SetTarget(nexus.transform);
             animator.SetBool("Running", false);
             animator.SetBool("Shooting", true);
             navMeshAgent.isStopped = true;
@@ -33,6 +35,7 @@ public class FindNexusState : BaseState
         }
         if (Vector3.Distance(transform.position, player.transform.position) < enemy.ranges.attackRange)
         {
+            enemy.SetTarget(player.transform);
             animator.SetBool("Running", false);
             animator.SetBool("Shooting", true);
             return typeof(AttackPlayerState);
