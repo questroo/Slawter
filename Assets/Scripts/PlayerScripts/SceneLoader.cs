@@ -9,8 +9,20 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Options");
     }
+    public void LoadTestScene()
+    {
+        SceneManager.LoadScene("Test");
+    }
+    public void LoadGameOverScene()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Game");
+    }
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

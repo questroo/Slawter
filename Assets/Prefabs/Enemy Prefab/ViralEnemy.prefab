@@ -99,6 +99,8 @@ MonoBehaviour:
   enemyDamage: {fileID: 11400000, guid: a245f334ecdaa9347a9430d469d75d6e, type: 2}
   bulletTrail: {fileID: 120648884187509030, guid: d2ec70c814159504cb3e12e99b00b151,
     type: 3}
+  attackRate: 0.5
+  shootFromPosition: {fileID: 9050008411114034245}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -210,6 +212,12 @@ PrefabInstance:
 --- !u!4 &9045091443980093919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589474225380908, guid: 76a7735f8f7682d449a734945330992c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9049649908129404915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9050008411114034245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4158454395356086, guid: 76a7735f8f7682d449a734945330992c,
     type: 3}
   m_PrefabInstance: {fileID: 9049649908129404915}
   m_PrefabAsset: {fileID: 0}
