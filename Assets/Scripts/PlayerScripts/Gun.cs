@@ -91,6 +91,7 @@ public class Gun : MonoBehaviour
             if (enemy)
             {
                 enemy.TakeDamage(damage);
+                DamagePopup.Create(rayHit.point, damage);
             }
             SpawnBulletTrail(rayHit.point);
         }
