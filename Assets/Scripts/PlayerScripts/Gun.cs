@@ -11,9 +11,12 @@ public class Gun : MonoBehaviour
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     private int bulletsLeft, bulletsShot;
+    public float zoomInFOV;
+    public bool canADS;
     public AmmoType ammoType;
     public WeaponType weaponType;
     private bool spendBullets = true;
+    private bool isADSing = false;
     // Bools
     private bool shooting, readyToShoot, reloading;
 
@@ -43,6 +46,10 @@ public class Gun : MonoBehaviour
     }
     private void MyInput()
     {
+        if(canADS && Input.GetMouseButtonDown(1))
+        {
+            isADSing = !isADSing;
+        }
         if (allowButtonHold)
         {
             shooting = Input.GetKey(KeyCode.Mouse0);
@@ -64,6 +71,14 @@ public class Gun : MonoBehaviour
             }
         }
 
+        if(isADSing)
+        {
+            Camera.main.fieldOfView = zoomInFOV;
+        }
+        else
+        {
+            Camera.main.fieldOfView = 60.0f;
+        }
         // Shoot
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {

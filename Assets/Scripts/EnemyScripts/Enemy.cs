@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
 
     private Vector3 GetRandomDirectionToTargetFromShootPosition()
     {
-        var randomDir = ExtensionMethods.GetRandomOffsetedVectorFromPoint(Target.position, 2.0f);
+        var randomDir = ExtensionMethods.GetRandomOffsetedVectorFromPoint(Target.position, 0.6f);
         return randomDir - shootFromPosition.position;
     }
 

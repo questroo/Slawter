@@ -10,6 +10,12 @@ public class NexusHealthUI : MonoBehaviour
         healthSlider = GetComponent<Slider>();
     }
 
+    private void Update()
+    {
+        Vector3 targetLookAt = GameObject.FindGameObjectWithTag("Player").transform.position;
+        var targetLookAtModified = new Vector3(targetLookAt.x, transform.position.y, targetLookAt.z);
+        transform.parent.gameObject.transform.LookAt(targetLookAtModified);
+    }
     public void SetMaxHealth(float maxHealth)
     {
         healthSlider.maxValue = maxHealth;
