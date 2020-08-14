@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public LineRenderer bulletTrail;
     public float attackRate = 0.5f;
     public Transform shootFromPosition;
+    private bool isDead = false;
 
     [SerializeField] private LayerMask layerMask;
 
@@ -110,6 +111,11 @@ public class Enemy : MonoBehaviour
     }
     private void Die()
     {
+        isDead = true;
         //Play Death animation and stuff
+    }
+    public bool CheckIsDead()
+    {
+        return isDead;
     }
 }
