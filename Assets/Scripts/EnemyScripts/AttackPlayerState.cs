@@ -15,7 +15,7 @@ public class AttackPlayerState : BaseState
 
     public override Type Tick()
     {
-        navMeshAgent.transform.LookAt(player.transform);
+        navMeshAgent.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         if (enemy.GetHP() <= 0.0f)
         {
             enemy.GetComponent<Collider>().enabled = false;

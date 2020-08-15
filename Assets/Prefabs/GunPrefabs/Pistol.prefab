@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 2703667564686182833}
   - component: {fileID: 398638724342911791}
   - component: {fileID: 398638724342911789}
-  - component: {fileID: 398638724342911790}
   - component: {fileID: 4932204913301319483}
   m_Layer: 0
   m_Name: Pistol
@@ -88,7 +87,7 @@ Animator:
   m_GameObject: {fileID: 7565838190131499688}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aeebd7acf77db524dbb7c9e0c2a6c8f6, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -97,21 +96,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &398638724342911790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565838190131499688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af187654adce1524b9467ac07adae716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  meleeAnimator: {fileID: 398638724342911789}
-  meleeCollider: {fileID: 398638724342911791}
 --- !u!114 &4932204913301319483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,12 +117,16 @@ MonoBehaviour:
   magazineSize: 16
   bulletsPerTap: 1
   allowButtonHold: 0
+  zoomInFOV: 0
+  canADS: 0
   ammoType: 0
+  weaponType: {fileID: 0}
   fpsCamera: {fileID: 0}
   attackPoint: {fileID: 398638723364884343}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 4294967295
   text: {fileID: 0}
+  bulletTrail: {fileID: 0}
   muzzleFlash: {fileID: 100006, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
   bulletHoleGraphic: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}

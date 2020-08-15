@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class NexusHealth : MonoBehaviour
 {
+    public delegate void NexusDeath();
+    public static event NexusDeath OnNexusDeath;
 
     public float maxHealth = 255.0f;
     private float currentHealth;
@@ -35,7 +37,8 @@ public class NexusHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("you have died.");
+        OnNexusDeath?.Invoke();
+        Debug.Log("Nexus has been destroyed.");
     }
 
     public float GetCurrentHealth()

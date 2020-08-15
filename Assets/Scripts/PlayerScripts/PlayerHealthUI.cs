@@ -3,11 +3,12 @@ using TMPro;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    private TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText;
     
     private void Start()
     {
         healthText = GetComponent<TextMeshProUGUI>();
+        healthText.text = 250.ToString();
     }
 
     public void SetHealth(float health)

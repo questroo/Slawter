@@ -3,24 +3,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public delegate void PlayerDeath();
+    public static event PlayerDeath OnPlayerDeath;
 
     public float maxHealth = 255.0f;
     private float currentHealth;
     public PlayerHealthUI playerHealthUI;
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
-        playerHealthUI.SetHealth(maxHealth);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            currentHealth -= 15.0f;
-            playerHealthUI.SetHealth(currentHealth);
-        }
+        playerHealthUI.SetHealth(currentHealth);
     }
 
     public void TakeDamage(float damage)
@@ -36,6 +29,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        OnPlayerDeath?.Invoke();
         Debug.Log("you have died.");
     }
 
