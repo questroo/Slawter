@@ -17,7 +17,7 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(CurrentState);
+        //Debug.Log(CurrentState);
         if(CurrentState == null)
         {
             CurrentState = availableStates[typeof(FindNexusState)];

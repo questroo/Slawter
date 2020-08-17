@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    private GameControls controls;
+
+    private Vector2 moveVector;
     [SerializeField]
     private float moveSpeed = 10.0f;
     [SerializeField]
@@ -22,31 +25,31 @@ public class PlayerMovement : MonoBehaviour
 
     private float verticalDirection;
 
+    private void Awake()
+    {
+        if (controls == null)
+        {
+            controls = new GameControls();
+        }
+    }
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        controls.Player.Sprint.performed += ctx => sprinting = true;
+        controls.Player.Sprint.canceled += ctx => sprinting = false;
+        controls.Player.Move.performed += ctx => walking = sprinting != true ? true : false;
+        controls.Player.Move.performed += ctx => moveVector = ctx.ReadValue<Vector2>();
     }
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        if((x != 0 || z != 0) && !sprinting)
-        {
-            walking = true;
-        }
-        else
+        if(moveVector == Vector2.zero)
         {
             walking = false;
         }
-        if(Input.GetKey(KeyCode.LeftShift) && controller.isGrounded)
-        {
-            sprinting = true;
-        }
-        else
-        {
-            sprinting = false;
-        }
+        float x = moveVector.x;
+        float z = moveVector.y;
         Vector3 direction = transform.right * x + transform.forward * z;
         if (controller.isGrounded)
         {
@@ -62,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         direction.y = verticalDirection;
 
-        if (sprinting && z > 0)
+        if (sprinting && z > 0 && controller.isGrounded)
         {
             GetComponentInChildren<Animator>().SetBool("Sprinting", true);
             controller.Move(direction * moveSpeed * sprintSpeed * Time.deltaTime);
@@ -72,5 +75,13 @@ public class PlayerMovement : MonoBehaviour
             GetComponentInChildren<Animator>().SetBool("Sprinting", false);
             controller.Move(direction * moveSpeed * Time.deltaTime);
         }
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 }

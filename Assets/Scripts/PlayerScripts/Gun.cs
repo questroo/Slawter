@@ -5,6 +5,8 @@ using TMPro;
 
 public class Gun : MonoBehaviour
 {
+    private GameControls controls;
+
     // Gun stats
     public float damage, timeBetweenShooting, range, reloadTime, timeBetweenShots;
     public float spread;
@@ -34,44 +36,47 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
+        if (controls == null)
+        {
+            controls = new GameControls();
+        }
         ammoInventory = GetComponentInParent<AmmoInventory>();
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
-    private void Update()
-    {
-        MyInput();
 
-        text.SetText(bulletsLeft + " / " + ammoInventory.GetCurrentAmmoAmount(ammoType));
-    }
-    private void MyInput()
+    private void Start()
     {
-        if(canADS && Input.GetMouseButtonDown(1))
-        {
-            isADSing = !isADSing;
-        }
         if (allowButtonHold)
         {
-            shooting = Input.GetKey(KeyCode.Mouse0);
+            controls.Player.Shoot.performed += ctx => shooting = true;
+            controls.Player.Shoot.canceled += ctx => shooting = false;
         }
         else
         {
-            shooting = Input.GetKeyDown(KeyCode.Mouse0);
+            controls.Player.Shoot.performed += ctx => shooting = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if (canADS)
         {
-            if (ammoInventory.GetCurrentAmmoAmount(ammoType) > 0)
-            {
-                Reload();
-            }
-            else
-            {
-                Debug.Log("You have no ammo left");
-            }
+            controls.Player.AimDownSight.performed += ctx => isADSing = !isADSing;
         }
 
-        if(isADSing)
+        controls.Player.Reload.performed += ctx => Reload();
+    }
+
+    private void Update()
+    {
+        MyInput();
+        text.SetText(bulletsLeft + " / " + ammoInventory.GetCurrentAmmoAmount(ammoType));
+        if (!allowButtonHold)
+        {
+            shooting = false;
+        }
+    }
+    private void MyInput()
+    {
+        if (isADSing)
         {
             Camera.main.fieldOfView = zoomInFOV;
         }
@@ -142,9 +147,12 @@ public class Gun : MonoBehaviour
 
     private void Reload()
     {
-        reloading = true;
-        GetComponentInChildren<Animator>().SetBool("Reloading", true);
-        Invoke("ReloadFinished", reloadTime);
+        if (ammoInventory.GetCurrentAmmoAmount(ammoType) > 0 && bulletsLeft < magazineSize)
+        {
+            reloading = true;
+            GetComponentInChildren<Animator>().SetBool("Reloading", true);
+            Invoke("ReloadFinished", reloadTime);
+        }
     }
 
     private void ReloadFinished()
@@ -178,9 +186,16 @@ public class Gun : MonoBehaviour
 
         Invoke("TurnOffUnlimitedAmmo", duration);
     }
-
     public void TurnOffUnlimitedAmmo()
     {
         spendBullets = true;
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 }

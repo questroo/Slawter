@@ -1,48 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
+    private GameControls controls;
     int weaponSelected = 3;
 
     public GameObject rifle;   // 1
     public GameObject sniper;  // 2
     public GameObject handgun; // 3
 
+    private void Awake()
+    {
+        if (controls == null)
+        {
+            controls = new GameControls();
+        }
+    }
     private void Start()
     {
         SwapWeapon(weaponSelected);
+        controls.Player.SwapWeapon1.performed += ctx => SwapWeapon(1);
+        controls.Player.SwapWeapon2.performed += ctx => SwapWeapon(2);
+        controls.Player.SwapWeapon3.performed += ctx => SwapWeapon(3);
     }
 
-    private void Update()
+    void SwapWeapon(int weaponSlot)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if(weaponSelected != 1)
-            {
-                SwapWeapon(1);
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (weaponSelected != 2)
-            {
-                SwapWeapon(2);
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (weaponSelected != 3)
-            {
-                SwapWeapon(3);
-            }
-        }
-    }
-
-    void SwapWeapon(int weaponType)
-    {
-        switch (weaponType)
+        switch (weaponSlot)
         {
             case 1:
                 rifle.SetActive(true);
@@ -62,6 +46,14 @@ public class WeaponSwitching : MonoBehaviour
             default:
                 break;
         }
-        weaponSelected = weaponType;
+        weaponSelected = weaponSlot;
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 }
