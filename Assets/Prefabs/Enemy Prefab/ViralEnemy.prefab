@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1586892594}
   - component: {fileID: 1586892593}
   - component: {fileID: 1586892595}
-  - component: {fileID: 1586892597}
+  - component: {fileID: 5966404873845508267}
   m_Layer: 8
   m_Name: ViralEnemy
   m_TagString: Enemy
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9049649906323510837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.42, y: 0, z: -10.48}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9049649906504124475}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5987271d559472b4eae64a4395c38cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1586892597
+--- !u!114 &5966404873845508267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9049649906323510837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b93a77702373e4c981035a8968d4e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 370b59dd86ddc7349891b412142d851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 11400000, guid: 085cb965fcc2f2648881ffbb03e54da5, type: 2}
@@ -100,10 +100,7 @@ MonoBehaviour:
   bulletTrail: {fileID: 120648884187509030, guid: d2ec70c814159504cb3e12e99b00b151,
     type: 3}
   attackRate: 0.5
-  shootFromPosition: {fileID: 9050008411114034245}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  shootFromPosition: {fileID: 9050430284344763119}
 --- !u!1 &9049649906504124474
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,9 +212,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9049649908129404915}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &9050008411114034245 stripped
+--- !u!4 &9050430284344763119 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4158454395356086, guid: 76a7735f8f7682d449a734945330992c,
+  m_CorrespondingSourceObject: {fileID: 4299917270824220, guid: 76a7735f8f7682d449a734945330992c,
     type: 3}
   m_PrefabInstance: {fileID: 9049649908129404915}
   m_PrefabAsset: {fileID: 0}

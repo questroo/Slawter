@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f22c5ab344c9c7e45924e3aef6ea7734
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hp: {fileID: 11400000, guid: 376f08a8c1f041c438d8040fe49e3704, type: 2}
+  - ranges: {fileID: 11400000, guid: d6f3e4c701924a9498ba61b99e80172b, type: 2}
+  - enemyDamage: {fileID: 11400000, guid: 5eca1bf74d125b747a8f85cd49b0b9e1, type: 2}
+  - bulletTrail: {fileID: 120648884187509030, guid: d2ec70c814159504cb3e12e99b00b151,
+      type: 3}
+  - shootFromPosition: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

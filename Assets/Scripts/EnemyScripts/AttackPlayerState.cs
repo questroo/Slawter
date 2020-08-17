@@ -15,23 +15,23 @@ public class AttackPlayerState : BaseState
 
     public override Type Tick()
     {
-        navMeshAgent.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+        navMeshAgent.transform.LookAt(new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z));
         if (enemy.GetHP() <= 0.0f)
         {
             enemy.GetComponent<Collider>().enabled = false;
             enemy.SetTarget(null);
             navMeshAgent.isStopped = true;
-            animator.SetTrigger("Dead");
+            Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
-        if (Vector3.Distance(transform.position, player.transform.position) > enemy.ranges.attackRange &&
-            Vector3.Distance(transform.position, player.transform.position) <= enemy.ranges.chaseRange)
+        if (Vector3.Distance(transform.position, Player.transform.position) > enemy.ranges.attackRange &&
+            Vector3.Distance(transform.position, Player.transform.position) <= enemy.ranges.chaseRange)
         {
-            animator.SetBool("Running", true);
-            animator.SetBool("Shooting", false);
+            Animator.SetBool("Running", true);
+            Animator.SetBool("Shooting", false);
             enemy.SetTarget(null);
             navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(player.transform.position);
+            navMeshAgent.SetDestination(Player.transform.position);
             return typeof(ChasePlayerState);
         }
         return typeof(AttackPlayerState);

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public HP hp;
     private float currentHP;
@@ -15,7 +11,7 @@ public class Enemy : MonoBehaviour
     public Transform shootFromPosition;
     private bool isDead = false;
 
-    [SerializeField] private LayerMask layerMask;
+    //[SerializeField] private LayerMask layerMask;
 
     public Transform Target { get; private set; }
 
@@ -31,18 +27,7 @@ public class Enemy : MonoBehaviour
         currentHP = hp.maxHP;
     }
 
-    private void InitializeStateMachine()
-    {
-        var states = new Dictionary<Type, BaseState>()
-        {
-            { typeof(FindNexusState), new FindNexusState(this)},
-            { typeof(ChasePlayerState), new ChasePlayerState(this)},
-            { typeof(AttackPlayerState), new AttackPlayerState(this)},
-            { typeof(AttackNexusState), new AttackNexusState(this)},
-            { typeof(DeathState), new DeathState(this)}
-        };
-        GetComponent<StateMachine>().SetStates(states);
-    }
+    public abstract void InitializeStateMachine();
 
     public void TakeDamage(float damage)
     {

@@ -20,20 +20,20 @@ public class ChasePlayerState : BaseState
         {
             enemy.GetComponent<Collider>().enabled = false;
             navMeshAgent.isStopped = true;
-            animator.SetTrigger("Dead");
+            Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
-        if (Vector3.Distance(transform.position, player.transform.position) < enemy.ranges.attackRange)
+        if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.attackRange)
         {
-            enemy.SetTarget(player.transform);
+            enemy.SetTarget(Player.transform);
             navMeshAgent.isStopped = true;
-            animator.SetBool("Running", false);
-            animator.SetBool("Shooting", true);
+            Animator.SetBool("Running", false);
+            Animator.SetBool("Shooting", true);
             return typeof(AttackPlayerState);
         }
-        if (Vector3.Distance(transform.position, player.transform.position) > enemy.ranges.chaseRange)
+        if (Vector3.Distance(transform.position, Player.transform.position) > enemy.ranges.chaseRange)
         {
-            navMeshAgent.SetDestination(nexus.transform.position);
+            navMeshAgent.SetDestination(Nexus.transform.position);
             return typeof(FindNexusState);
         }
         return typeof(ChasePlayerState);

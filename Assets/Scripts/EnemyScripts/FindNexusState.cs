@@ -17,35 +17,38 @@ public class FindNexusState : BaseState
 
     public override Type Tick()
     {
-        navMeshAgent.SetDestination(nexus.transform.position);
-        animator.SetBool("Running", true);
+        navMeshAgent.SetDestination(Nexus.transform.position);
+        Animator.SetBool("Running", true);
         if (enemy.GetHP() <= 0.0f)
         {
             enemy.GetComponent<Collider>().enabled = false;
             navMeshAgent.isStopped = true;
-            animator.SetTrigger("Dead");
+            Animator.SetTrigger("Dead");
             return typeof(DeathState);
+        }
+        if (enemy.GetType().Name != typeof(FleshEnemy).Name)
+        {
+            if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.attackRange)
+            {
+                enemy.SetTarget(Player.transform);
+                Animator.SetBool("Running", false);
+                Animator.SetBool("Shooting", true);
+                return typeof(AttackPlayerState);
+            }
+            if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.chaseRange)
+            {
+                Animator.SetBool("Shooting", true);
+                navMeshAgent.SetDestination(Player.transform.position);
+                return typeof(ChasePlayerState);
+            }
         }
         if (Vector3.Distance(transform.position, navMeshAgent.destination) < enemy.ranges.attackRange)
         {
-            enemy.SetTarget(nexus.transform);
-            animator.SetBool("Running", false);
-            animator.SetBool("Shooting", true);
+            enemy.SetTarget(Nexus.transform);
+            Animator.SetBool("Running", false);
+            Animator.SetBool("Shooting", true);
             navMeshAgent.isStopped = true;
             return typeof(AttackNexusState);
-        }
-        if (Vector3.Distance(transform.position, player.transform.position) < enemy.ranges.attackRange)
-        {
-            enemy.SetTarget(player.transform);
-            animator.SetBool("Running", false);
-            animator.SetBool("Shooting", true);
-            return typeof(AttackPlayerState);
-        }
-        if (Vector3.Distance(transform.position, player.transform.position) < enemy.ranges.chaseRange)
-        {
-            animator.SetBool("Shooting", true);
-            navMeshAgent.SetDestination(player.transform.position);
-            return typeof(ChasePlayerState);
         }
         return typeof(FindNexusState);
     }

@@ -22,7 +22,7 @@ public class AttackNexusState : BaseState
             enemy.GetComponent<Collider>().enabled = false;
             enemy.SetTarget(null);
             navMeshAgent.isStopped = true;
-            animator.SetTrigger("Dead");
+            Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
         return typeof(AttackNexusState);
