@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d77ef03f8b5f484e8a212884c73c4e3, type: 3}
+  m_Name: EnemyCountWaves
+  m_EditorClassIdentifier: 
+  enemyCountWave1: 3
+  enemyCountWave2: 5
+  enemyCountWave3: 7
+  enemyCountWave4: 9
+  enemyCountWave5: 11
+  enemyCountWave6: 13
+  enemyCountWave7: 15
+  enemyCountWave8: 17
+  enemyCountWave9: 19

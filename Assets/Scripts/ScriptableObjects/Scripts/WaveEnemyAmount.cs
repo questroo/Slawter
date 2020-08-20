@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveEnemyAmount : MonoBehaviour
+[CreateAssetMenu]
+public class WaveEnemyAmount : ScriptableObject
 {
     public int enemyCountWave1 = 3;
     public int enemyCountWave2 = 5;
