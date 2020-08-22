@@ -1,0 +1,26 @@
+Support email: CGViewport@gmail.com
+-----------------------------------------------------------
+
+Madular Wasteland
+-----------------------------------------------------------
+-----------------------------------------------------------
+
+Perfabs:
+Each perfab has three meshes in it:
+*Main mesh
+*Collision mesh
+*Snow mesh
+Leave the collision mesh unchanged. You can disable or delete Snow Mesh to use default object appear instead of winter model.
+------------------------------------------------------------
+
+Textures:
+One or more textures on this 3D model have been created with images from CGTextures. These images may not be redistributed by default, please visit www.cgtextures.com for more information.
+------------------------------------------------------------
+
+Meterials:
+In this package, material can be customized with this options:
+Specular map multiply slider
+Normal map multiply slider
+------------------------------------------------------------
+
+

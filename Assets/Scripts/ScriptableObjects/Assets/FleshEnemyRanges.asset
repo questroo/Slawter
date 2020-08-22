@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FleshEnemyRanges
   m_EditorClassIdentifier: 
   chaseRange: 0
-  attackRange: 8
+  attackRange: 5

@@ -7,11 +7,11 @@ public class EnemyRemainingUI : MonoBehaviour
 
     private void Start()
     {
-        EnemiesRemainingText.text = "Enemies Remaining: 0";
+        EnemiesRemainingText.text = "Enemies Left 0";
     }
 
     public void UpdateText(int enemiesRemaining)
     {
-        EnemiesRemainingText.text = "Enemies Remaining: " + enemiesRemaining;
+        EnemiesRemainingText.text = "Enemies Left " + enemiesRemaining;
     }
 }
