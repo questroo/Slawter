@@ -98,7 +98,6 @@ public abstract class Enemy : MonoBehaviour
     {
         isDead = true;
         FindObjectOfType<EnemyManager>().RemoveEnemyFromList(this);
-        //Play Death animation and stuff
     }
     public bool CheckIsDead()
     {
