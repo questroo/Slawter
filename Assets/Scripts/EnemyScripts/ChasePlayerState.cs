@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,6 +24,17 @@ public class ChasePlayerState : BaseState
             Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
+
+        if(Vector3.Angle(Player.transform.position - enemy.transform.position, enemy.transform.forward) <= enemy.ranges.fieldOfViewAngle * 0.5f)
+        {
+            // Find the nearest wall
+            var closestWall = GameObject.FindGameObjectsWithTag("Wall").OrderBy(wall => (transform.position - wall.transform.position).sqrMagnitude).First().transform;
+            var positionBehindWall = closestWall.transform.position + (closestWall.transform.position - Player.transform.position).normalized;
+            navMeshAgent.SetDestination(positionBehindWall);
+
+            return typeof(TakeCoverState);
+        }
+
         if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.attackRange)
         {
             enemy.SetTarget(Player.transform);

@@ -4,6 +4,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public HP hp;
     private float currentHP;
+    public bool playerInSight = false;
     public EnemyAIRanges ranges;
     public EnemyDamage enemyDamage;
     public LineRenderer bulletTrail;

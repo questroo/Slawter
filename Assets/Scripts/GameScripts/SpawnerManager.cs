@@ -17,10 +17,10 @@ public class SpawnerManager : MonoBehaviour
         SetEnemyCount();
     }
 
-    private void Update()
-    {
-        print("Current wave " + currentWave);
-    }
+    //private void Update()
+    //{
+    //    print("Current wave " + currentWave);
+    //}
 
     public void SetEnemyCount()
     {

@@ -9,6 +9,8 @@ public class ArmoredEnemy : Enemy
         {
             { typeof(FindNexusState), new FindNexusState(this)},
             { typeof(ChasePlayerState), new ChasePlayerState(this)},
+            { typeof(TakeCoverState), new TakeCoverState(this)},
+            { typeof(PeekFromCoverState), new PeekFromCoverState(this)},
             { typeof(AttackPlayerState), new AttackPlayerState(this)},
             { typeof(AttackNexusState), new AttackNexusState(this)},
             { typeof(DeathState), new DeathState(this)}

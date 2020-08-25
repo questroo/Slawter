@@ -9,13 +9,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Enemy> deadEnemies;
 
-    private void Update()
-    {
-        if (enemies != null)
-        {
-            Debug.Log("There are " + enemies.Count + "enemies");
-        }
-    }
+    //private void Update()
+    //{
+    //    if (enemies != null)
+    //    {
+    //        Debug.Log("There are " + enemies.Count + "enemies");
+    //    }
+    //}
 
     public void FindEnemies()
     {

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class FindNexusState : BaseState
 {
     private NavMeshAgent navMeshAgent => gameObject.GetComponent<NavMeshAgent>();
-    private float turnSpeed;
     private readonly LayerMask layerMask = LayerMask.NameToLayer("Enemy");
     private Enemy enemy;
 
@@ -28,18 +27,18 @@ public class FindNexusState : BaseState
         }
         if (enemy.GetType().Name != typeof(FleshEnemy).Name)
         {
+            if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.chaseRange)
+            {
+                Animator.SetBool("Shooting", true);
+                navMeshAgent.SetDestination(Player.transform.position);
+                return typeof(ChasePlayerState);
+            }
             if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.attackRange)
             {
                 enemy.SetTarget(Player.transform);
                 Animator.SetBool("Running", false);
                 Animator.SetBool("Shooting", true);
                 return typeof(AttackPlayerState);
-            }
-            if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.chaseRange)
-            {
-                Animator.SetBool("Shooting", true);
-                navMeshAgent.SetDestination(Player.transform.position);
-                return typeof(ChasePlayerState);
             }
         }
         if (Vector3.Distance(transform.position, navMeshAgent.destination) < enemy.ranges.attackRange)
