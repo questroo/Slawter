@@ -25,14 +25,28 @@ public class ChasePlayerState : BaseState
             return typeof(DeathState);
         }
 
-        if(Vector3.Angle(Player.transform.position - enemy.transform.position, enemy.transform.forward) <= enemy.ranges.fieldOfViewAngle * 0.5f)
+        if (Vector3.Angle(Player.transform.position - enemy.transform.position, enemy.transform.forward) <= enemy.ranges.fieldOfViewAngle * 0.5f)
         {
-            // Find the nearest wall
-            var closestWall = GameObject.FindGameObjectsWithTag("Wall").OrderBy(wall => (transform.position - wall.transform.position).sqrMagnitude).First().transform;
-            var positionBehindWall = closestWall.transform.position + (closestWall.transform.position - Player.transform.position).normalized;
-            navMeshAgent.SetDestination(positionBehindWall);
+            // Gets all the walls in order by distance from the enemy
+            var walls = GameObject.FindGameObjectsWithTag("Wall").OrderByDescending(wall => (transform.position - wall.transform.position).sqrMagnitude).ToList();
+            Wall closestWall = null;
+            foreach(var wall in walls)
+            {
+                if (!wall.GetComponent<Wall>().IsOccupied)
+                {
+                    closestWall = wall.GetComponent<Wall>();
+                }
+            }
 
-            return typeof(TakeCoverState);
+            if (closestWall != null)
+            {
+                var positionBehindWall = closestWall.transform.position + (closestWall.transform.position - Player.transform.position).normalized;
+                navMeshAgent.SetDestination(positionBehindWall);
+                closestWall.GetComponent<Wall>().IsOccupied = true;
+                enemy.currentlyOccupiedWall = closestWall.GetComponent<Wall>();
+                return typeof(TakeCoverState);
+            }
+
         }
 
         if (Vector3.Distance(transform.position, Player.transform.position) < enemy.ranges.attackRange)

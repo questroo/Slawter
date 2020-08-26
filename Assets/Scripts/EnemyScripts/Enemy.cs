@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     public float attackRate = 0.5f;
     public Transform shootFromPosition;
     private bool isDead = false;
+    public Wall currentlyOccupiedWall = null;
 
     //[SerializeField] private LayerMask layerMask;
 

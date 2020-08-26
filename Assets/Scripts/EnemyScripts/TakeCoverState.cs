@@ -14,7 +14,6 @@ public class TakeCoverState : BaseState
 
     public override Type Tick()
     {
-        Animator.SetBool("Running", true);
         if (enemy.GetHP() <= 0.0f)
         {
             enemy.GetComponent<Collider>().enabled = false;
@@ -22,9 +21,18 @@ public class TakeCoverState : BaseState
             Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
-
-
-
+        if (navMeshAgent.remainingDistance < 3.0f && !Animator.GetBool("TakeCover"))
+        {
+            if (navMeshAgent.remainingDistance <= 0.01f)
+            {
+                Animator.SetBool("Running", false);
+                Animator.SetBool("TakeCover", false);
+                Animator.SetBool("TakingCoverIdle", true);
+                return typeof(TakeCoverState);
+            }
+            Animator.SetBool("Running", false);
+            Animator.SetBool("TakeCover", true);
+        }
 
 
         return typeof(TakeCoverState);
