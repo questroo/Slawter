@@ -21,15 +21,16 @@ public class TakeCoverState : BaseState
             Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
-        if (navMeshAgent.remainingDistance < 3.0f && !Animator.GetBool("TakeCover"))
+        if (navMeshAgent.remainingDistance <= 0.1f)
         {
-            if (navMeshAgent.remainingDistance <= 0.01f)
-            {
-                Animator.SetBool("Running", false);
-                Animator.SetBool("TakeCover", false);
-                Animator.SetBool("TakingCoverIdle", true);
-                return typeof(TakeCoverState);
-            }
+            Animator.SetBool("Running", false);
+            Animator.SetBool("TakeCover", false);
+            Animator.SetBool("TakingCoverIdle", false);
+            Animator.SetBool("Emerging", true);
+            return typeof(PeekFromCoverState);
+        }
+        if (navMeshAgent.remainingDistance < 3.0f && !Animator.GetBool("TakeCover") && !Animator.GetBool("Emerging"))
+        {
             Animator.SetBool("Running", false);
             Animator.SetBool("TakeCover", true);
         }
