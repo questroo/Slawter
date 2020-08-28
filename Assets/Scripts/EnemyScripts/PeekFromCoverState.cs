@@ -14,7 +14,7 @@ public class PeekFromCoverState : BaseState
 
     public override Type Tick()
     {
-        Animator.SetBool("Shooting", true);
+        Animator.SetBool("Running", true);
         navMeshAgent.SetDestination(Player.transform.position);
         if (enemy.GetHP() <= 0.0f)
         {
@@ -25,11 +25,14 @@ public class PeekFromCoverState : BaseState
         }
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(enemy.shootFromPosition.position, (Player.transform.position - enemy.shootFromPosition.position).normalized);
-        var distance = Vector3.Distance(enemy.shootFromPosition.position, Player.transform.position);
+        var distance = Vector3.Distance(enemy.shootFromPosition.position, Player.transform.position)*1.2f;
         if (Physics.Raycast(ray, out hit, distance))
         {
             if(hit.collider.transform.GetComponent<PlayerMovement>())
             {
+                enemy.SetTarget(Player.transform);
+                Animator.SetBool("Running", false);
+                Animator.SetBool("Shooting", true);
                 return typeof(AttackPlayerState);
             }
         }

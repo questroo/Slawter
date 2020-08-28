@@ -24,6 +24,16 @@ public class AttackPlayerState : BaseState
             Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
+        if (Vector3.Distance(transform.position, Player.transform.position) <= enemy.ranges.attackRange)
+        {
+            Animator.SetBool("Running", false);
+            Animator.SetBool("Shooting", true);
+            if (enemy.Target == null)
+            {
+                enemy.SetTarget(Player.transform);
+            }
+            navMeshAgent.isStopped = true;
+        }
         if (Vector3.Distance(transform.position, Player.transform.position) > enemy.ranges.attackRange &&
             Vector3.Distance(transform.position, Player.transform.position) <= enemy.ranges.chaseRange)
         {
@@ -32,8 +42,17 @@ public class AttackPlayerState : BaseState
             enemy.SetTarget(null);
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(Player.transform.position);
-            return typeof(ChasePlayerState);
         }
+        if (Vector3.Distance(transform.position, Player.transform.position) > enemy.ranges.chaseRange)
+        {
+            Animator.SetBool("Running", true);
+            Animator.SetBool("Shooting", false);
+            enemy.SetTarget(null);
+            navMeshAgent.isStopped = false;
+            navMeshAgent.SetDestination(Player.transform.position);
+            return typeof(FindNexusState);
+        }
+
         return typeof(AttackPlayerState);
     }
 }
