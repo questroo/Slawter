@@ -2,6 +2,7 @@
 
 public abstract class Enemy : MonoBehaviour
 {
+    public bool showDebugUI = true;
     public HP hp;
     private float currentHP;
     public bool playerInSight = false;
@@ -12,9 +13,6 @@ public abstract class Enemy : MonoBehaviour
     public Transform shootFromPosition;
     private bool isDead = false;
     public Wall currentlyOccupiedWall = null;
-
-    //[SerializeField] private LayerMask layerMask;
-
     public Transform Target { get; private set; }
 
     public StateMachine StateMachine => GetComponent<StateMachine>();

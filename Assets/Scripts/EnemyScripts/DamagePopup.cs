@@ -32,7 +32,7 @@ public class DamagePopup : MonoBehaviour
     private void Update()
     {
         textMesh.transform.LookAt(Camera.main.transform);
-        float moveYSpeed = 5.0f;
+        float moveYSpeed = 3.0f;
         transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime;
 
         lifeSpan -= Time.deltaTime;

@@ -105,6 +105,7 @@ public class Gun : MonoBehaviour
         Vector3 direction = fpsCamera.transform.forward + new Vector3(x, y, 0);
 
         // Raycast
+        LineRenderer lr = SpawnBulletTrail(direction);
         if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
             Enemy enemy = rayHit.collider.GetComponent<Enemy>();
@@ -114,7 +115,7 @@ public class Gun : MonoBehaviour
                 CurrentTargetManager.Instance.AssignTarget(enemy);
                 DamagePopup.Create(rayHit.point, damage);
             }
-            SpawnBulletTrail(rayHit.point);
+            lr.SetPosition(1, rayHit.point);
         }
 
         // Graphics
@@ -168,16 +169,18 @@ public class Gun : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("Reloading", false);
     }
 
-    private void SpawnBulletTrail(Vector3 hitPoint)
+    private LineRenderer SpawnBulletTrail(Vector3 direction)
     {
         GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, attackPoint.position, Quaternion.identity);
 
         LineRenderer lineRenderer = bulletTrailEffect.GetComponent<LineRenderer>();
-
+        lineRenderer.startWidth = 0.02f;
+        lineRenderer.endWidth = 0.02f;
         lineRenderer.SetPosition(0, attackPoint.position);
-        lineRenderer.SetPosition(1, hitPoint);
+        lineRenderer.SetPosition(1, attackPoint.position + direction * 5000.0f);
 
-        Destroy(bulletTrailEffect, 0.1f);
+        Destroy(bulletTrailEffect, 0.02f);
+        return lineRenderer;
     }
 
     public void TurnOnUnlimitedAmmo(float duration)
