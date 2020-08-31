@@ -88,7 +88,8 @@ public abstract class Enemy : MonoBehaviour
         GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, shootFromPosition.position, Quaternion.identity);
 
         LineRenderer lineRenderer = bulletTrailEffect.GetComponent<LineRenderer>();
-
+        lineRenderer.startWidth = 0.02f;
+        lineRenderer.endWidth = 0.02f;
         lineRenderer.SetPosition(0, shootFromPosition.position);
         lineRenderer.SetPosition(1, hitPoint);
 
