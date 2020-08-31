@@ -7,12 +7,12 @@ public class DamagePopup : MonoBehaviour
 {
     private TextMeshPro textMesh;
     private float lifeSpan;
-    private Color textColor;
-    public static DamagePopup Create(Vector3 position, float damageAmount)
+    private Color textColor = new Color(0.0f, 0.0f, 0.0f);
+    public static DamagePopup Create(Vector3 position, float damageAmount, bool isHeadshot)
     {
         Transform damagePopupTransform = Instantiate(GameAssets.instance.damagePopup, position, Quaternion.identity);
         DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
-        damagePopup.Setup(damageAmount);
+        damagePopup.Setup(damageAmount, isHeadshot);
 
         return damagePopup;
     }
@@ -22,10 +22,10 @@ public class DamagePopup : MonoBehaviour
         textMesh = GetComponent<TextMeshPro>();
     }
     
-    public void Setup(float damageAmount)
+    public void Setup(float damageAmount, bool isHeadshot)
     {
+        if (isHeadshot) { textMesh.color = new Color(255.0f, 140.0f, 0.0f); }
         textMesh.SetText(((int)damageAmount).ToString());
-        textColor = textMesh.color;
         lifeSpan = 1.0f;
     }
 

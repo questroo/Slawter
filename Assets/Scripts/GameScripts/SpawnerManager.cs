@@ -6,7 +6,7 @@ public class SpawnerManager : MonoBehaviour
 {
     public WaveEnemyAmount waveEnemyAmount;
     private Spawner[] spawners;
-    public int startingWave = 1;
+    public int startingWave = 0;
     private int currentWave;
     private int numberToSpawn = 0;
 
@@ -17,13 +17,9 @@ public class SpawnerManager : MonoBehaviour
         SetEnemyCount();
     }
 
-    //private void Update()
-    //{
-    //    print("Current wave " + currentWave);
-    //}
-
     public void SetEnemyCount()
     {
+        ++currentWave;
         switch (currentWave)
         {
             case 1:
@@ -65,7 +61,6 @@ public class SpawnerManager : MonoBehaviour
             default:
                 break;
         }
-        ++currentWave;
     }
 
     private void SendSpawnCommand()
@@ -77,5 +72,6 @@ public class SpawnerManager : MonoBehaviour
         }
         FindObjectOfType<EnemyManager>().FindEnemies();
         EnemyManager.hasWaveStarted = true;
+        FindObjectOfType<PopupUIManager>().DisplayEventText("Wave " + currentWave + " has started.");
     }
 }

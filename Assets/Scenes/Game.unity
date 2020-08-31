@@ -10632,7 +10632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 827811924}
-  lifeSpan: 1.2
+  lifeSpan: 2.5
 --- !u!4 &1663483574
 Transform:
   m_ObjectHideFlags: 0
@@ -13753,6 +13753,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c58f0d31f4621df4cbe21a6ea064c044,
         type: 2}
+    - target: {fileID: 4504499957107076775, guid: 917b694b0546bf2418d10f593b336bf6,
+        type: 3}
+      propertyPath: startingWave
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 917b694b0546bf2418d10f593b336bf6, type: 3}
 --- !u!1001 &5473793884795897082
@@ -13817,6 +13822,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4444705545223226432, guid: 0887f5d2de198474ba157661069d0f2c,
+        type: 3}
+      propertyPath: headshotDamagePopup
+      value: 
+      objectReference: {fileID: 8029525022942978281, guid: 8239f723925f718489b883a45d3aab2f,
+        type: 3}
     - target: {fileID: 9179632506172115722, guid: 0887f5d2de198474ba157661069d0f2c,
         type: 3}
       propertyPath: m_Name
