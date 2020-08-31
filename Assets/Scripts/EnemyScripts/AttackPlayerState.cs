@@ -18,7 +18,11 @@ public class AttackPlayerState : BaseState
         navMeshAgent.transform.LookAt(new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z));
         if (enemy.GetHP() <= 0.0f)
         {
-            enemy.GetComponent<Collider>().enabled = false;
+            var enemyColliders = enemy.GetComponentsInChildren<Collider>();
+            foreach (Collider col in enemyColliders)
+            {
+                col.enabled = false;
+            }
             enemy.SetTarget(null);
             navMeshAgent.isStopped = true;
             Animator.SetTrigger("Dead");

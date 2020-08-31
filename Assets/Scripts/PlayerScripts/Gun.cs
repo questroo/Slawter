@@ -103,17 +103,26 @@ public class Gun : MonoBehaviour
         float y = Random.Range(-spread, spread);
 
         Vector3 direction = fpsCamera.transform.forward + new Vector3(x, y, 0);
-
+        List<Enemy> enemies = new List<Enemy>();
         // Raycast
         LineRenderer lr = SpawnBulletTrail(direction);
         if (Physics.Raycast(fpsCamera.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            Enemy enemy = rayHit.collider.GetComponent<Enemy>();
+            Enemy enemy = rayHit.collider.GetComponentInParent<Enemy>();
             if (enemy)
             {
-                enemy.TakeDamage(damage);
-                CurrentTargetManager.Instance.AssignTarget(enemy);
-                DamagePopup.Create(rayHit.point, damage);
+                if (rayHit.collider.CompareTag("Body"))
+                {
+                    enemy.TakeDamage(damage);
+                    CurrentTargetManager.Instance.AssignTarget(enemy);
+                    DamagePopup.Create(rayHit.point, damage);
+                }
+                else if (rayHit.collider.CompareTag("Head"))
+                {
+                    enemy.TakeDamage(damage * 2);
+                    CurrentTargetManager.Instance.AssignTarget(enemy);
+                    DamagePopup.Create(rayHit.point, damage * 2);
+                }
             }
             lr.SetPosition(1, rayHit.point);
         }

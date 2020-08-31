@@ -18,7 +18,11 @@ public class PeekFromCoverState : BaseState
         navMeshAgent.SetDestination(Player.transform.position);
         if (enemy.GetHP() <= 0.0f)
         {
-            enemy.GetComponent<Collider>().enabled = false;
+            var enemyColliders = enemy.GetComponentsInChildren<Collider>();
+            foreach (Collider col in enemyColliders)
+            {
+                col.enabled = false;
+            }
             navMeshAgent.isStopped = true;
             Animator.SetTrigger("Dead");
             return typeof(DeathState);
