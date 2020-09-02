@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
-        playerHealthUI.SetHealth(currentHealth);
+        playerHealthUI.InitializeHealthBar(currentHealth);
     }
 
     public void TakeDamage(float damage)

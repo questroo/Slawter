@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
     private bool shooting, readyToShoot, reloading;
 
     // References
+    public GameObject ZoominCanvas;
     public Camera fpsCamera;
     public Transform attackPoint;
     public RaycastHit rayHit;
@@ -63,6 +64,7 @@ public class Gun : MonoBehaviour
         }
 
         controls.Player.Reload.performed += ctx => Reload();
+        ZoominCanvas.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -78,10 +80,12 @@ public class Gun : MonoBehaviour
     {
         if (isADSing)
         {
+            ZoominCanvas.gameObject.SetActive(true);
             Camera.main.fieldOfView = zoomInFOV;
         }
         else
         {
+            ZoominCanvas.gameObject.SetActive(false);
             Camera.main.fieldOfView = 60.0f;
         }
         // Shoot
@@ -114,13 +118,13 @@ public class Gun : MonoBehaviour
                 if (rayHit.collider.CompareTag("Body"))
                 {
                     enemy.TakeDamage(damage);
-                    CurrentTargetManager.Instance.AssignTarget(enemy);
+                    //CurrentTargetManager.Instance.AssignTarget(enemy);
                     DamagePopup.Create(rayHit.point, damage, false);
                 }
                 else if (rayHit.collider.CompareTag("Head"))
                 {
                     enemy.TakeDamage(damage * 2);
-                    CurrentTargetManager.Instance.AssignTarget(enemy);
+                    //CurrentTargetManager.Instance.AssignTarget(enemy);
                     DamagePopup.Create(rayHit.point, damage * 2, true);
                 }
             }
@@ -159,6 +163,7 @@ public class Gun : MonoBehaviour
     {
         if (ammoInventory.GetCurrentAmmoAmount(ammoType) > 0 && bulletsLeft < magazineSize)
         {
+            isADSing = false;
             reloading = true;
             GetComponentInChildren<Animator>().SetBool("Reloading", true);
             Invoke("ReloadFinished", reloadTime);

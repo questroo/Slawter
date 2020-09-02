@@ -13,11 +13,24 @@ public class CurrentTargetManager : Singleton<CurrentTargetManager>
     {
         currentTargetCanvas.SetActive(false);
     }
+    private void Update()
+    {
+        if (currentTarget)
+        {
+            var playerPos = FindObjectOfType<PlayerMovement>().transform;
+            transform.LookAt(new Vector3(playerPos.position.x, transform.position.y, playerPos.position.z));
+            transform.parent = playerPos;
+        }
+    }
     public void AssignTarget(Enemy newTarget)
     {
+        var newPosition = newTarget.transform.position;
+        newPosition.y += 4.0f;
+        transform.position = newPosition;
         currentTarget = newTarget;
-        if(currentTarget.CheckIsDead())
+        if (currentTarget.CheckIsDead())
         {
+            currentTarget = null;
             currentTargetCanvas.SetActive(false);
             return;
         }

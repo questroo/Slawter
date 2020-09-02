@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public abstract class Enemy : MonoBehaviour
     public bool playerInSight = false;
     public EnemyAIRanges ranges;
     public EnemyDamage enemyDamage;
+    private Slider healthSlider;
     public LineRenderer bulletTrail;
     public float attackRate = 0.5f;
     public Transform shootFromPosition;
@@ -24,14 +26,25 @@ public abstract class Enemy : MonoBehaviour
 
     private void Start()
     {
+        healthSlider = GetComponentInChildren<Slider>();
         currentHP = hp.maxHP;
+        healthSlider.maxValue = hp.maxHP;
+        healthSlider.value = currentHP;
+        healthSlider.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        var playerPos = FindObjectOfType<PlayerMovement>().transform.position;
+        healthSlider.gameObject.transform.LookAt(new Vector3(playerPos.x, transform.position.y, playerPos.z));
+    }
     public abstract void InitializeStateMachine();
 
     public void TakeDamage(float damage)
     {
         currentHP -= damage;
+        healthSlider.gameObject.SetActive(true);
+        healthSlider.value = currentHP;
         if(currentHP <= 0)
         {
             Die();
@@ -98,6 +111,7 @@ public abstract class Enemy : MonoBehaviour
     private void Die()
     {
         isDead = true;
+        healthSlider.gameObject.SetActive(false);
         FindObjectOfType<EnemyManager>().RemoveEnemyFromList(this);
     }
     public bool CheckIsDead()

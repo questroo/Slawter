@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    public TextMeshProUGUI healthText;
-    
-    private void Start()
-    {
-        healthText = GetComponent<TextMeshProUGUI>();
-        healthText.text = 250.ToString();
-    }
+    public Slider healthSlider;
 
+    public void InitializeHealthBar(float maxHealth)
+    {
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = healthSlider.maxValue;
+    }
     public void SetHealth(float health)
     {
-        healthText.text = health.ToString();
+        healthSlider.value = health;
     }
 }

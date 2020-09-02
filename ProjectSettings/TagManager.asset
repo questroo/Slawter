@@ -22,7 +22,7 @@ TagManager:
   - Melee
   - Player
   - Wall
-  - 
+  - ZoomIn
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: ZoomIn
+    uniqueID: 225751523
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
