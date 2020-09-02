@@ -5,13 +5,16 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     public WaveEnemyAmount waveEnemyAmount;
+    public int timeBetweenRounds = 10;
     private Spawner[] spawners;
     public int startingWave = 0;
     private int currentWave;
     private int numberToSpawn = 0;
+    private PopupUIManager popupUIManager;
 
     private void Start()
     {
+        popupUIManager = FindObjectOfType<PopupUIManager>();
         currentWave = startingWave;
         spawners = FindObjectsOfType<Spawner>();
         SetEnemyCount();
@@ -24,45 +27,48 @@ public class SpawnerManager : MonoBehaviour
         {
             case 1:
                 numberToSpawn = waveEnemyAmount.enemyCountWave1;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 2:
                 numberToSpawn = waveEnemyAmount.enemyCountWave2;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 3:
                 numberToSpawn = waveEnemyAmount.enemyCountWave3;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 4:
                 numberToSpawn = waveEnemyAmount.enemyCountWave4;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 5:
                 numberToSpawn = waveEnemyAmount.enemyCountWave5;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 6:
                 numberToSpawn = waveEnemyAmount.enemyCountWave6;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 7:
                 numberToSpawn = waveEnemyAmount.enemyCountWave7;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 8:
                 numberToSpawn = waveEnemyAmount.enemyCountWave8;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             case 9:
                 numberToSpawn = waveEnemyAmount.enemyCountWave9;
-                Invoke("SendSpawnCommand", 3.0f);
                 break;
             default:
                 break;
         }
+        StartCoroutine(popupUIManager.CountdownForRound(timeBetweenRounds));
+        Invoke("SendSpawnCommand", timeBetweenRounds);
     }
-
+    //private IEnumerator UpdateCountdown()
+    //{
+    //    float t = timeBetweenRounds;
+    //
+    //    while (t > 0)
+    //    {
+    //        t -= Time.deltaTime;
+    //        StartCoroutine(popupUIManager.CountdownForRound((int)timeBetweenRounds));
+    //        yield return null;
+    //    }
+    //}
     private void SendSpawnCommand()
     {
         for (int enemy = 0; enemy < numberToSpawn; ++enemy)
@@ -72,6 +78,6 @@ public class SpawnerManager : MonoBehaviour
         }
         FindObjectOfType<EnemyManager>().FindEnemies();
         EnemyManager.hasWaveStarted = true;
-        FindObjectOfType<PopupUIManager>().DisplayEventText("Wave " + currentWave + " has started.");
+        popupUIManager.DisplayEventText("Wave " + currentWave + " has started.");
     }
 }

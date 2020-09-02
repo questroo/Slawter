@@ -1,49 +1,48 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
 public class PopupUIManager : MonoBehaviour
 {
-    public TextMeshProUGUI textBox;
+    public Text text;
+    public Image textBackground;
     public float lifeSpan;
+    public float fadeTime = 2.0f;
 
     private void Start()
     {
-        textBox.alpha = 0.0f;
+        textBackground.gameObject.SetActive(false);
     }
+
 
     public void DisplayEventText(string eventString)
     {
-        StartCoroutine(BlipEventString(eventString));
+        StartCoroutine(BlipTextOnScreen(eventString));
     }
 
-    private IEnumerator BlipEventString(string eventString)
+    private IEnumerator BlipTextOnScreen(string blipString)
     {
-        if (eventString is null)
-        {
-            throw new System.ArgumentNullException(nameof(eventString));
-        }
+        textBackground.gameObject.SetActive(true);
+        text.text = blipString;
+        textBackground.CrossFadeAlpha(1.0f, fadeTime, false);
+        yield return new WaitForSeconds(fadeTime);
+        text.CrossFadeAlpha(0.0f, fadeTime, false);
+        textBackground.CrossFadeAlpha(0.0f, fadeTime, false);
+        yield return new WaitForSeconds(fadeTime);
+        textBackground.CrossFadeAlpha(1.0f, 0.0f, false);
+        textBackground.gameObject.SetActive(false);
+    }
+    public IEnumerator CountdownForRound(int timeBeforeFading)
+    {
+        int duration = timeBeforeFading;
 
-        float t = 0;
-        Color32 startColor = new Color32(255, 255, 255, 0);
-        Color32 endColor = new Color32(255, 255, 255, 255);
-
-        textBox.color = startColor;
-        textBox.text = eventString;
-
-        while (t < 1)
+        while (duration > 0)
         {
-            textBox.color = Color32.Lerp(startColor, endColor, t);
-            t += Time.deltaTime / lifeSpan;
-            yield return null;
+            textBackground.gameObject.SetActive(true);
+            text.text = "Remaining time till next round " + duration;
+            yield return new WaitForSeconds(1);
+            --duration;
         }
-        t = 0;
-        while(t < 1)
-        {
-            textBox.color = Color32.Lerp(endColor, startColor, t);
-            t += Time.deltaTime / lifeSpan;
-            yield return null;
-        }
-        textBox.alpha = 0;
     }
 }

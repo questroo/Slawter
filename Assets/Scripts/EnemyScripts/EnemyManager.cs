@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
     public static bool hasWaveStarted;
-
+    public Text enemiesRemainingText;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Enemy> deadEnemies;
 
@@ -21,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     {
         var allEnemies = FindObjectsOfType<Enemy>().ToList();
         enemies = allEnemies.Where(enemy => !deadEnemies.Any(dead => dead == enemy)).ToList();
-        FindObjectOfType<EnemyRemainingUI>().UpdateText(enemies.Count);
+        enemiesRemainingText.text = enemies.Count.ToString();
     }
 
     public void RemoveEnemyFromList(Enemy me)
@@ -33,6 +34,6 @@ public class EnemyManager : MonoBehaviour
             hasWaveStarted = false;
             FindObjectOfType<SpawnerManager>().SetEnemyCount();
         }
-        FindObjectOfType<EnemyRemainingUI>().UpdateText(enemies.Count);
+        enemiesRemainingText.text = enemies.Count.ToString();
     }
 }

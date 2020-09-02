@@ -16,14 +16,6 @@ public class NexusHealth : MonoBehaviour
         nexusHealthUI.SetMaxHealth(maxHealth);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage(30.0f);
-        }
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
