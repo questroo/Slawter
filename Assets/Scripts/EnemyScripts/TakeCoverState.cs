@@ -16,36 +16,42 @@ public class TakeCoverState : BaseState
 
     public override Type Tick()
     {
+        navMeshAgent.speed = enemy.runMoveSpeed;
+        Animator.SetBool("Sprinting", true);
         if (atDestination)
         {
             timeInCover += Time.deltaTime;
             if (timeInCover > 3.0f)
             {
+                Animator.SetBool("Sprinting", false);
+                navMeshAgent.speed = enemy.walkMoveSpeed;
                 return typeof(PeekFromCoverState);
             }
         }
         if (enemy.GetHP() <= 0.0f)
         {
             var enemyColliders = enemy.GetComponentsInChildren<Collider>();
-            foreach(Collider col in enemyColliders)
+            foreach (Collider col in enemyColliders)
             {
                 col.enabled = false;
             }
+            navMeshAgent.speed = enemy.walkMoveSpeed;
             navMeshAgent.isStopped = true;
             Animator.SetTrigger("Dead");
             return typeof(DeathState);
         }
         if (navMeshAgent.remainingDistance <= 0.1f && !atDestination)
         {
+            Animator.SetBool("Sprinting", false);
             Animator.SetBool("Running", false);
             Animator.SetBool("TakeCover", false);
             Animator.SetBool("TakingCoverIdle", false);
             Animator.SetBool("Emerging", true);
             atDestination = true;
-            //return typeof(PeekFromCoverState);
         }
         if (navMeshAgent.remainingDistance < 3.0f && !Animator.GetBool("TakeCover") && !Animator.GetBool("Emerging"))
         {
+            Animator.SetBool("Sprinting", false);
             Animator.SetBool("Running", false);
             Animator.SetBool("TakeCover", true);
         }

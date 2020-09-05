@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
     public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
-    public TextMeshProUGUI text;
+    public Text bulletsText;
     public LineRenderer bulletTrail;
     private AmmoInventory ammoInventory;
 
@@ -70,7 +70,7 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         MyInput();
-        text.SetText(bulletsLeft + " / " + ammoInventory.GetCurrentAmmoAmount(ammoType));
+        bulletsText.text = bulletsLeft + " / " + ammoInventory.GetCurrentAmmoAmount(ammoType);
         if (!allowButtonHold)
         {
             shooting = false;

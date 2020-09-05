@@ -40,7 +40,7 @@ public class PopupUIManager : MonoBehaviour
         while (duration > 0)
         {
             textBackground.gameObject.SetActive(true);
-            text.text = "Remaining time till next round " + duration;
+            text.text = "Remaining time until next round " + duration;
             yield return new WaitForSeconds(1);
             --duration;
         }

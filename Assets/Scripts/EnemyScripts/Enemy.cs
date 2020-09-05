@@ -7,6 +7,8 @@ public abstract class Enemy : MonoBehaviour
     public HP hp;
     private float currentHP;
     public bool playerInSight = false;
+    public float walkMoveSpeed = 3.5f;
+    public float runMoveSpeed = 6.0f;
     public EnemyAIRanges ranges;
     public EnemyDamage enemyDamage;
     private Slider healthSlider;
