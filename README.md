@@ -1,2 +1,2 @@
-# FPSDoom
-A single player FPS made in unity with inspiration from Doom
+# Slawter
+A single player FPS made in Unity with inspiration from Gears of War.
