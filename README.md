@@ -18,3 +18,8 @@ A single player FPS made in Unity with inspiration from Gears of War.
 
 ## C# Features
  - Use of LINQ, Delegates, Events, Inheritance.
+![AttackPlayerState](https://user-images.githubusercontent.com/42195958/92345593-cdf2ac00-f07e-11ea-8f1c-0920ad1c2827.png)
+![BaseState](https://user-images.githubusercontent.com/42195958/92345598-cfbc6f80-f07e-11ea-9c69-9423c1cfa9d9.png)
+![InitializeStateMachine](https://user-images.githubusercontent.com/42195958/92345606-d4812380-f07e-11ea-80b0-4df319912358.png)
+![StateMachine](https://user-images.githubusercontent.com/42195958/92345610-d814aa80-f07e-11ea-8079-cf37f69f8c12.png)
+
