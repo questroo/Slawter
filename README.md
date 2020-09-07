@@ -7,3 +7,14 @@ A single player FPS made in Unity with inspiration from Gears of War.
 ![Shooting enemies](https://user-images.githubusercontent.com/42195958/92343009-700e9600-f077-11ea-84b1-2b9e1fff09d5.png)
 ![Falling enemy](https://user-images.githubusercontent.com/42195958/92343013-70a72c80-f077-11ea-9bad-ab8a8b3bdf9d.png)
 ![Enemy](https://user-images.githubusercontent.com/42195958/92343014-71d85980-f077-11ea-9223-457a93402b34.png)
+
+## Enemy State Machine
+ - Implemented a Statemachine that has a dictionary of all its possible states which all derive from a BaseState class.
+ - BaseState is an abstract class which has a abstract method called Tick() which is called in the Update method in the StateMachine class.
+ - In the Enemy class they have a reference their own StateMachine initializing it with the states it needs. 
+ 
+## Input System
+ - All input in the game is handled with the new Unity InputSystem.
+
+## C# Features
+ - Use of LINQ, Delegates, Events, Inheritance.
