@@ -1,6 +1,9 @@
 # Slawter
 A single player FPS made in Unity with inspiration from Gears of War.
 
+![WeaponSwapping](https://user-images.githubusercontent.com/42195958/92345663-10b48400-f07f-11ea-8445-5f9e3ffcf845.GIF)
+
+
 ![game enter](https://user-images.githubusercontent.com/42195958/92342395-9d5a4480-f075-11ea-893a-5b2a4d12e315.png)
 ![Peeking Enemy](https://user-images.githubusercontent.com/42195958/92343006-6e44d280-f077-11ea-83c7-160badaa4ee3.png)
 ![Scope on enemy](https://user-images.githubusercontent.com/42195958/92343008-6edd6900-f077-11ea-8118-7929952b663f.png)
