@@ -30,3 +30,7 @@ A single player FPS made in Unity with inspiration from Gears of War.
 ![InitializeStateMachine](https://user-images.githubusercontent.com/42195958/92345606-d4812380-f07e-11ea-80b0-4df319912358.png)
 ![StateMachine](https://user-images.githubusercontent.com/42195958/92345610-d814aa80-f07e-11ea-8079-cf37f69f8c12.png)
 
+## Author
+Justin Questroo
+
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/justin-questroo-504452173/)
