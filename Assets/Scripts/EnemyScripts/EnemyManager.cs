@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     {
         var allEnemies = FindObjectsOfType<Enemy>().ToList();
         enemies = allEnemies.Where(enemy => !deadEnemies.Any(dead => dead == enemy)).ToList();
+
         enemiesRemainingText.text = enemies.Count.ToString();
     }
 

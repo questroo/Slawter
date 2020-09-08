@@ -17,4 +17,5 @@ public class GameAssets : MonoBehaviour
     }
 
     public Transform damagePopup;
+    public Transform arrowImage;
 }

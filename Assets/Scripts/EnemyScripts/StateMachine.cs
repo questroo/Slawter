@@ -13,7 +13,7 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>().gameObject;
-        debugText = GetComponentInChildren<TextMesh>();
+        //debugText = GetComponentInChildren<TextMesh>();
     }
     public void SetStates(Dictionary<Type, BaseState> states)
     {
@@ -22,7 +22,7 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
-        debugText.transform.LookAt(new Vector3(player.transform.position.x, debugText.transform.position.y, player.transform.position.z));
+        //debugText.transform.LookAt(new Vector3(player.transform.position.x, debugText.transform.position.y, player.transform.position.z));
         if (CurrentState == null)
         {
             CurrentState = availableStates[typeof(FindNexusState)];
@@ -35,7 +35,7 @@ public class StateMachine : MonoBehaviour
         {
             SwitchToNewState(nextState);
         }
-        debugText.text = CurrentState.ToString();
+        //debugText.text = CurrentState.ToString();
     }
 
     private void SwitchToNewState(Type nextState)

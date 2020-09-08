@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129ed1b345b81414da93b701fe868ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDebugUI: 1
+  showDebugUI: 0
   hp: {fileID: 11400000, guid: b047b839277a0f4498960fea5409156d, type: 2}
   playerInSight: 0
   walkMoveSpeed: 3.5
@@ -297,6 +297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Debug State Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991204674353145086, guid: f38b60d595af53344a6ce9428bfac130,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8571118140369433970, guid: f38b60d595af53344a6ce9428bfac130,
         type: 3}

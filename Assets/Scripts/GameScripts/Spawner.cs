@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        int randomIndex = Random.Range(0, spawnableEnemies.Length - 1);
+        int randomIndex = Random.Range(0, spawnableEnemies.Length);
         Instantiate(spawnableEnemies[randomIndex], transform);
     }
 }
