@@ -82,6 +82,7 @@ public abstract class Enemy : MonoBehaviour
 
             if(player)
             {
+                RegisterToDamageIndicator();
                 player.TakeDamage(enemyDamage.damage);
             }
             if(nexus)
@@ -119,5 +120,12 @@ public abstract class Enemy : MonoBehaviour
     public bool CheckIsDead()
     {
         return isDead;
+    }
+    void RegisterToDamageIndicator()
+    {
+        //if(!DamageIndicatorSystem.CheckIfObjectInSight(this.transform))
+        //{
+            DamageIndicatorSystem.CreateIndicator(this.transform);
+        //}
     }
 }
