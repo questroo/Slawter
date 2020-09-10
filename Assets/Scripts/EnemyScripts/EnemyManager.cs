@@ -10,13 +10,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Enemy> deadEnemies;
 
-    //private void Update()
-    //{
-    //    if (enemies != null)
-    //    {
-    //        Debug.Log("There are " + enemies.Count + "enemies");
-    //    }
-    //}
 
     public void FindEnemies()
     {
@@ -28,12 +21,14 @@ public class EnemyManager : MonoBehaviour
 
     public void RemoveEnemyFromList(Enemy me)
     {
+        RoundDataManager.Instance.kills++;
         enemies.Remove(me);
         deadEnemies.Add(me);
         if (enemies.Count <= 0)
         {
+            PostRoundSummaryManager.Instance.OpenSummary();
+            RoundDataManager.Instance.ResetData();
             hasWaveStarted = false;
-            FindObjectOfType<SpawnerManager>().SetEnemyCount();
         }
         enemiesRemainingText.text = enemies.Count.ToString();
     }

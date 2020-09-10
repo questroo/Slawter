@@ -118,14 +118,13 @@ public class Gun : MonoBehaviour
                 if (rayHit.collider.CompareTag("Body"))
                 {
                     enemy.TakeDamage(damage);
-                    //CurrentTargetManager.Instance.AssignTarget(enemy);
                     DamagePopup.Create(rayHit.point, damage, false);
                 }
                 else if (rayHit.collider.CompareTag("Head"))
                 {
                     enemy.TakeDamage(damage * 2);
-                    //CurrentTargetManager.Instance.AssignTarget(enemy);
                     DamagePopup.Create(rayHit.point, damage * 2, true);
+                    RoundDataManager.Instance.headshots++;
                 }
             }
             lr.SetPosition(1, rayHit.point);

@@ -58,17 +58,7 @@ public class SpawnerManager : MonoBehaviour
         StartCoroutine(popupUIManager.CountdownForRound(timeBetweenRounds));
         Invoke("SendSpawnCommand", timeBetweenRounds);
     }
-    //private IEnumerator UpdateCountdown()
-    //{
-    //    float t = timeBetweenRounds;
-    //
-    //    while (t > 0)
-    //    {
-    //        t -= Time.deltaTime;
-    //        StartCoroutine(popupUIManager.CountdownForRound((int)timeBetweenRounds));
-    //        yield return null;
-    //    }
-    //}
+
     private void SendSpawnCommand()
     {
         for (int enemy = 0; enemy < numberToSpawn; ++enemy)

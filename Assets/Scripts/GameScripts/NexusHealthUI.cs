@@ -28,7 +28,7 @@ public class NexusHealthUI : MonoBehaviour
             if (viewportPoint.z <= 0)
             {
                 // If target is behind camera then snap position to the top of the screen.
-                viewportPoint.y -= 1;
+                viewportPoint.y += 1;
             }
             var screenPoint = Camera.main.ViewportToScreenPoint(viewportPoint);
             screenPoint.x = (Mathf.Clamp(screenPoint.x, borderMargin, Screen.width - borderMargin));

@@ -47,7 +47,7 @@ public abstract class Enemy : MonoBehaviour
         currentHP -= damage;
         healthSlider.gameObject.SetActive(true);
         healthSlider.value = currentHP;
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             Die();
         }
@@ -61,7 +61,7 @@ public abstract class Enemy : MonoBehaviour
     public void SetTarget(Transform target)
     {
         Target = target;
-        if(Target)
+        if (Target)
         {
             InvokeRepeating("Attack", attackRate, attackRate);
         }
@@ -80,12 +80,12 @@ public abstract class Enemy : MonoBehaviour
             var player = rayHit.collider.GetComponent<Health>();
             var nexus = rayHit.collider.GetComponent<NexusHealth>();
 
-            if(player)
+            if (player)
             {
                 RegisterToDamageIndicator();
                 player.TakeDamage(enemyDamage.damage);
             }
-            if(nexus)
+            if (nexus)
             {
                 nexus.TakeDamage(enemyDamage.damage);
             }
@@ -123,9 +123,9 @@ public abstract class Enemy : MonoBehaviour
     }
     void RegisterToDamageIndicator()
     {
-        //if(!DamageIndicatorSystem.CheckIfObjectInSight(this.transform))
-        //{
+        if (!DamageIndicatorSystem.CheckIfObjectInSight(this.transform))
+        {
             DamageIndicatorSystem.CreateIndicator(this.transform);
-        //}
+        }
     }
 }
