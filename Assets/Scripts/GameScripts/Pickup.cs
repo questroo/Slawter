@@ -12,6 +12,7 @@ public class Pickup : MonoBehaviour
     public virtual void PickedUp()
     {
         Debug.Log("Picked up the item");
+        GetComponentInParent<ItemSpawner>().StartRespawnTimer();
     }
     public GameObject GetPlayer()
     {

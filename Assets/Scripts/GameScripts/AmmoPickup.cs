@@ -10,7 +10,6 @@ public class AmmoPickup : Pickup
     public override void PickedUp()
     {
         base.PickedUp();
-
         GetPlayer().GetComponent<AmmoInventory>().AddAmmoOfType(amount, ammoType);
     }
 }

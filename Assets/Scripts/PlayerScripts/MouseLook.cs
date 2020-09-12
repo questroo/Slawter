@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     public float mouseSensitivity = 100.0f;
+    public float zoomInSensitivity = 35.0f;
 
     public Transform playerBody;
 
@@ -19,6 +20,11 @@ public class MouseLook : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        if (GetComponentInChildren<Gun>().GetADS())
+        {
+            mouseX = Input.GetAxis("Mouse X") * zoomInSensitivity * Time.deltaTime;
+            mouseY = Input.GetAxis("Mouse Y") * zoomInSensitivity * Time.deltaTime;
+        }
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);

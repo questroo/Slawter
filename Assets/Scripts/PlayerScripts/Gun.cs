@@ -128,6 +128,7 @@ public class Gun : MonoBehaviour
                 }
             }
             lr.SetPosition(1, rayHit.point);
+            isADSing = false;
         }
 
         // Graphics
@@ -157,7 +158,10 @@ public class Gun : MonoBehaviour
     {
         readyToShoot = true;
     }
-
+    public bool GetADS()
+    {
+        return isADSing;
+    }
     private void Reload()
     {
         if (ammoInventory.GetCurrentAmmoAmount(ammoType) > 0 && bulletsLeft < magazineSize)
@@ -212,6 +216,7 @@ public class Gun : MonoBehaviour
     }
     private void OnDisable()
     {
+        isADSing = false;
         controls.Disable();
     }
 }
