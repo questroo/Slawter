@@ -13,4 +13,11 @@ public class FleshEnemy : Enemy
         };
         GetComponent<StateMachine>().SetStates(states);
     }
+
+    public override void Attack()
+    {
+        var nexus = FindObjectOfType<NexusHealth>();
+
+        nexus.TakeDamage(enemyDamage.damage);
+    }
 }

@@ -13,6 +13,7 @@ public class Pickup : MonoBehaviour
     {
         Debug.Log("Picked up the item");
         GetComponentInParent<ItemSpawner>().StartRespawnTimer();
+        FindObjectOfType<PopupUIManager>().DisplayEventText("Picked up " + gameObject.name);
     }
     public GameObject GetPlayer()
     {

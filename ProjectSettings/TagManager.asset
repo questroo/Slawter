@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Head
   - Body
+  - Nexus
   layers:
   - Default
   - TransparentFX

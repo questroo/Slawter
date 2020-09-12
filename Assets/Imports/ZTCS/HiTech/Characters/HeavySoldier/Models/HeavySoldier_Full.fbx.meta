@@ -1,113 +1,317 @@
 fileFormatVersion: 2
 guid: 40895e57792d8904a9dbf2b2f4be6aec
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: Head
-    100002: //RootNode
-    100004: HeavySoldier_Full
-    100006: Helmet
-    100008: Hips
-    100010: LeftArm
-    100012: LeftFoot
-    100014: LeftForeArm
-    100016: LeftHand
-    100018: LeftHandIndex1
-    100020: LeftHandIndex2
-    100022: LeftHandIndex3
-    100024: LeftHandMiddle1
-    100026: LeftHandMiddle2
-    100028: LeftHandMiddle3
-    100030: LeftHandThumb1
-    100032: LeftHandThumb2
-    100034: LeftHandThumb3
-    100036: LeftLeg
-    100038: LeftShoulder
-    100040: LeftToeBase
-    100042: LeftUpLeg
-    100044: Neck
-    100046: RightArm
-    100048: RightFoot
-    100050: RightForeArm
-    100052: RightHand
-    100054: RightHandIndex1
-    100056: RightHandIndex2
-    100058: RightHandIndex3
-    100060: RightHandMiddle1
-    100062: RightHandMiddle2
-    100064: RightHandMiddle3
-    100066: RightHandThumb1
-    100068: RightHandThumb2
-    100070: RightHandThumb3
-    100072: RightLeg
-    100074: RightShoulder
-    100076: RightToeBase
-    100078: RightUpLeg
-    100080: Spine
-    100082: Spine1
-    100084: Spine2
-    100086: Visor
-    400000: Head
-    400002: HeavySoldier_Full
-    400004: //RootNode
-    400006: Helmet
-    400008: Hips
-    400010: LeftArm
-    400012: LeftFoot
-    400014: LeftForeArm
-    400016: LeftHand
-    400018: LeftHandIndex1
-    400020: LeftHandIndex2
-    400022: LeftHandIndex3
-    400024: LeftHandMiddle1
-    400026: LeftHandMiddle2
-    400028: LeftHandMiddle3
-    400030: LeftHandThumb1
-    400032: LeftHandThumb2
-    400034: LeftHandThumb3
-    400036: LeftLeg
-    400038: LeftShoulder
-    400040: LeftToeBase
-    400042: LeftUpLeg
-    400044: Neck
-    400046: RightArm
-    400048: RightFoot
-    400050: RightForeArm
-    400052: RightHand
-    400054: RightHandIndex1
-    400056: RightHandIndex2
-    400058: RightHandIndex3
-    400060: RightHandMiddle1
-    400062: RightHandMiddle2
-    400064: RightHandMiddle3
-    400066: RightHandThumb1
-    400068: RightHandThumb2
-    400070: RightHandThumb3
-    400072: RightLeg
-    400074: RightShoulder
-    400076: RightToeBase
-    400078: RightUpLeg
-    400080: Spine
-    400082: Spine1
-    400084: Spine2
-    400086: Visor
-    2100000: bato_heavyarmor_154
-    2100002: enemymask_male_5
-    2300000: Helmet
-    2300002: Visor
-    3300000: Helmet
-    3300002: Visor
-    4300000: HeavySoldier_Full
-    4300002: Helmet
-    4300004: Visor
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: HeavySoldier_Full
-    13700002: Helmet
-    13700004: Visor
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Head
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: HeavySoldier_Full
+  - first:
+      1: 100006
+    second: Helmet
+  - first:
+      1: 100008
+    second: Hips
+  - first:
+      1: 100010
+    second: LeftArm
+  - first:
+      1: 100012
+    second: LeftFoot
+  - first:
+      1: 100014
+    second: LeftForeArm
+  - first:
+      1: 100016
+    second: LeftHand
+  - first:
+      1: 100018
+    second: LeftHandIndex1
+  - first:
+      1: 100020
+    second: LeftHandIndex2
+  - first:
+      1: 100022
+    second: LeftHandIndex3
+  - first:
+      1: 100024
+    second: LeftHandMiddle1
+  - first:
+      1: 100026
+    second: LeftHandMiddle2
+  - first:
+      1: 100028
+    second: LeftHandMiddle3
+  - first:
+      1: 100030
+    second: LeftHandThumb1
+  - first:
+      1: 100032
+    second: LeftHandThumb2
+  - first:
+      1: 100034
+    second: LeftHandThumb3
+  - first:
+      1: 100036
+    second: LeftLeg
+  - first:
+      1: 100038
+    second: LeftShoulder
+  - first:
+      1: 100040
+    second: LeftToeBase
+  - first:
+      1: 100042
+    second: LeftUpLeg
+  - first:
+      1: 100044
+    second: Neck
+  - first:
+      1: 100046
+    second: RightArm
+  - first:
+      1: 100048
+    second: RightFoot
+  - first:
+      1: 100050
+    second: RightForeArm
+  - first:
+      1: 100052
+    second: RightHand
+  - first:
+      1: 100054
+    second: RightHandIndex1
+  - first:
+      1: 100056
+    second: RightHandIndex2
+  - first:
+      1: 100058
+    second: RightHandIndex3
+  - first:
+      1: 100060
+    second: RightHandMiddle1
+  - first:
+      1: 100062
+    second: RightHandMiddle2
+  - first:
+      1: 100064
+    second: RightHandMiddle3
+  - first:
+      1: 100066
+    second: RightHandThumb1
+  - first:
+      1: 100068
+    second: RightHandThumb2
+  - first:
+      1: 100070
+    second: RightHandThumb3
+  - first:
+      1: 100072
+    second: RightLeg
+  - first:
+      1: 100074
+    second: RightShoulder
+  - first:
+      1: 100076
+    second: RightToeBase
+  - first:
+      1: 100078
+    second: RightUpLeg
+  - first:
+      1: 100080
+    second: Spine
+  - first:
+      1: 100082
+    second: Spine1
+  - first:
+      1: 100084
+    second: Spine2
+  - first:
+      1: 100086
+    second: Visor
+  - first:
+      4: 400000
+    second: Head
+  - first:
+      4: 400002
+    second: HeavySoldier_Full
+  - first:
+      4: 400004
+    second: //RootNode
+  - first:
+      4: 400006
+    second: Helmet
+  - first:
+      4: 400008
+    second: Hips
+  - first:
+      4: 400010
+    second: LeftArm
+  - first:
+      4: 400012
+    second: LeftFoot
+  - first:
+      4: 400014
+    second: LeftForeArm
+  - first:
+      4: 400016
+    second: LeftHand
+  - first:
+      4: 400018
+    second: LeftHandIndex1
+  - first:
+      4: 400020
+    second: LeftHandIndex2
+  - first:
+      4: 400022
+    second: LeftHandIndex3
+  - first:
+      4: 400024
+    second: LeftHandMiddle1
+  - first:
+      4: 400026
+    second: LeftHandMiddle2
+  - first:
+      4: 400028
+    second: LeftHandMiddle3
+  - first:
+      4: 400030
+    second: LeftHandThumb1
+  - first:
+      4: 400032
+    second: LeftHandThumb2
+  - first:
+      4: 400034
+    second: LeftHandThumb3
+  - first:
+      4: 400036
+    second: LeftLeg
+  - first:
+      4: 400038
+    second: LeftShoulder
+  - first:
+      4: 400040
+    second: LeftToeBase
+  - first:
+      4: 400042
+    second: LeftUpLeg
+  - first:
+      4: 400044
+    second: Neck
+  - first:
+      4: 400046
+    second: RightArm
+  - first:
+      4: 400048
+    second: RightFoot
+  - first:
+      4: 400050
+    second: RightForeArm
+  - first:
+      4: 400052
+    second: RightHand
+  - first:
+      4: 400054
+    second: RightHandIndex1
+  - first:
+      4: 400056
+    second: RightHandIndex2
+  - first:
+      4: 400058
+    second: RightHandIndex3
+  - first:
+      4: 400060
+    second: RightHandMiddle1
+  - first:
+      4: 400062
+    second: RightHandMiddle2
+  - first:
+      4: 400064
+    second: RightHandMiddle3
+  - first:
+      4: 400066
+    second: RightHandThumb1
+  - first:
+      4: 400068
+    second: RightHandThumb2
+  - first:
+      4: 400070
+    second: RightHandThumb3
+  - first:
+      4: 400072
+    second: RightLeg
+  - first:
+      4: 400074
+    second: RightShoulder
+  - first:
+      4: 400076
+    second: RightToeBase
+  - first:
+      4: 400078
+    second: RightUpLeg
+  - first:
+      4: 400080
+    second: Spine
+  - first:
+      4: 400082
+    second: Spine1
+  - first:
+      4: 400084
+    second: Spine2
+  - first:
+      4: 400086
+    second: Visor
+  - first:
+      21: 2100000
+    second: bato_heavyarmor_154
+  - first:
+      21: 2100002
+    second: enemymask_male_5
+  - first:
+      23: 2300000
+    second: Helmet
+  - first:
+      23: 2300002
+    second: Visor
+  - first:
+      33: 3300000
+    second: Helmet
+  - first:
+      33: 3300002
+    second: Visor
+  - first:
+      43: 4300000
+    second: HeavySoldier_Full
+  - first:
+      43: 4300002
+    second: Helmet
+  - first:
+      43: 4300004
+    second: Visor
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: HeavySoldier_Full
+  - first:
+      137: 13700002
+    second: Helmet
+  - first:
+      137: 13700004
+    second: Visor
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -124,6 +328,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -138,17 +343,23 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -160,323 +371,14 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
-    human:
-    - boneName: Hips
-      humanName: Hips
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftUpLeg
-      humanName: LeftUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightUpLeg
-      humanName: RightUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftLeg
-      humanName: LeftLowerLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightLeg
-      humanName: RightLowerLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftFoot
-      humanName: LeftFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightFoot
-      humanName: RightFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Spine
-      humanName: Spine
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Spine1
-      humanName: Chest
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Head
-      humanName: Head
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftShoulder
-      humanName: LeftShoulder
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightShoulder
-      humanName: RightShoulder
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftArm
-      humanName: LeftUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightArm
-      humanName: RightUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftForeArm
-      humanName: LeftLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightForeArm
-      humanName: RightLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHand
-      humanName: LeftHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHand
-      humanName: RightHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftToeBase
-      humanName: LeftToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightToeBase
-      humanName: RightToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandThumb1
-      humanName: Left Thumb Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandThumb2
-      humanName: Left Thumb Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandThumb3
-      humanName: Left Thumb Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandIndex1
-      humanName: Left Index Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandIndex2
-      humanName: Left Index Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandIndex3
-      humanName: Left Index Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandMiddle1
-      humanName: Left Middle Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandMiddle2
-      humanName: Left Middle Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftHandMiddle3
-      humanName: Left Middle Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandThumb1
-      humanName: Right Thumb Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandThumb2
-      humanName: Right Thumb Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandThumb3
-      humanName: Right Thumb Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandIndex1
-      humanName: Right Index Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandIndex2
-      humanName: Right Index Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandIndex3
-      humanName: Right Index Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandMiddle1
-      humanName: Right Middle Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandMiddle2
-      humanName: Right Middle Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightHandMiddle3
-      humanName: Right Middle Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Spine2
-      humanName: UpperChest
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
+    serializedVersion: 3
+    human: []
     skeleton:
     - name: HeavySoldier_Full(Clone)
       parentName: 
@@ -708,14 +610,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -17,6 +17,7 @@ public class AttackNexusState : BaseState
 
     public override Type Tick()
     {
+        Debug.Log(enemy.Target.position);
         if(enemy.GetHP() <= 0.0f)
         {
             var enemyColliders = enemy.GetComponentsInChildren<Collider>();

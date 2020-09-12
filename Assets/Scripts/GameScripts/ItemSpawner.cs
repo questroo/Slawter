@@ -7,6 +7,11 @@ public class ItemSpawner : MonoBehaviour
     public GameObject[] items;
     public float spawnDelay = 10.0f;
 
+    private void Start()
+    {
+        int index = Random.Range(0, items.Length);
+        Instantiate(items[index], transform);
+    }
     public void StartRespawnTimer()
     {
         StartCoroutine("WaitForRespawn");
@@ -26,5 +31,6 @@ public class ItemSpawner : MonoBehaviour
     {
         int index = Random.Range(0, items.Length);
         Instantiate(items[index], transform);
+        FindObjectOfType<PopupUIManager>().DisplayEventText(items[index].gameObject.name + " has spawned!");
     }
 }

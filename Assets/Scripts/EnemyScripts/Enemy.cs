@@ -35,6 +35,14 @@ public abstract class Enemy : MonoBehaviour
         healthSlider.gameObject.SetActive(false);
     }
 
+    private void OnDrawGizmos()
+    {
+        if(Target)
+        {
+            Gizmos.DrawLine(transform.position, Target.position);
+        }
+    }
+
     private void Update()
     {
         var playerPos = FindObjectOfType<PlayerMovement>().transform.position;
@@ -61,6 +69,7 @@ public abstract class Enemy : MonoBehaviour
     public void SetTarget(Transform target)
     {
         Target = target;
+        
         if (Target)
         {
             InvokeRepeating("Attack", attackRate, attackRate);
@@ -71,7 +80,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         RaycastHit rayHit;
 
@@ -95,7 +104,7 @@ public abstract class Enemy : MonoBehaviour
 
     private Vector3 GetRandomDirectionToTargetFromShootPosition()
     {
-        var randomDir = ExtensionMethods.GetRandomOffsetedVectorFromPoint(Target.position, 0.6f);
+        var randomDir = ExtensionMethods.GetRandomOffsetedVectorFromPoint(Target.position, 0.0f);
         return randomDir - shootFromPosition.position;
     }
 

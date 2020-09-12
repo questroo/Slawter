@@ -12,7 +12,7 @@ public abstract class BaseState
     protected Transform transform;
     protected Animator Animator => gameObject.GetComponentInChildren<Animator>();
     protected GameObject Player => GameObject.FindGameObjectWithTag("Player");
-    protected GameObject Nexus => GameObject.FindObjectOfType<NexusHealth>().gameObject;
+    protected GameObject Nexus => GameObject.FindGameObjectWithTag("Nexus");
 
     public abstract Type Tick();
 }

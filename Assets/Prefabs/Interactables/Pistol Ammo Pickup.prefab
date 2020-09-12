@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 5984510773252837633}
   - component: {fileID: 5984510773252837632}
   m_Layer: 0
-  m_Name: PistolAmmoPickup
+  m_Name: Pistol Ammo Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoType: 0
-  amount: 100
+  amount: 20
 --- !u!65 &5984510773252837632
 BoxCollider:
   m_ObjectHideFlags: 0
