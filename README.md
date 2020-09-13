@@ -2,6 +2,10 @@
 
 ## A single player FPS made in Unity with inspiration from Gears of War.
 
+## Concept
+ - The goal of this project is to build a first person shooter with inspirations from Gears of War's Horde mode.
+ - Some challenges I wanted to tackle were building AI systems, UI, and project architecture.
+ 
 ![game enter](https://user-images.githubusercontent.com/42195958/92342395-9d5a4480-f075-11ea-893a-5b2a4d12e315.png)
 ======
 ![Peeking Enemy](https://user-images.githubusercontent.com/42195958/92343006-6e44d280-f077-11ea-83c7-160badaa4ee3.png)
@@ -14,10 +18,6 @@
 ======
 ![Enemy](https://user-images.githubusercontent.com/42195958/92343014-71d85980-f077-11ea-9223-457a93402b34.png)
 ======
-
-## Concept
- - The goal of this project is to build a first person shooter with inspirations from Gears of War's Horde mode.
- - Some challenges I wanted to tackle were building AI systems, UI, and project architecture.
  
 ## Project Funtionalities
  - First person shooter wave based survival combat.
