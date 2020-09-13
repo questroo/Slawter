@@ -1,6 +1,6 @@
 # Slawter
-A single player FPS made in Unity with inspiration from Gears of War.
-======
+
+## A single player FPS made in Unity with inspiration from Gears of War.
 
 ![game enter](https://user-images.githubusercontent.com/42195958/92342395-9d5a4480-f075-11ea-893a-5b2a4d12e315.png)
 ======
@@ -15,20 +15,37 @@ A single player FPS made in Unity with inspiration from Gears of War.
 ![Enemy](https://user-images.githubusercontent.com/42195958/92343014-71d85980-f077-11ea-9223-457a93402b34.png)
 ======
 
-## Enemy State Machine
+## Concept
+ - The goal of this project is to build a first person shooter with inspirations from Gears of War's Horde mode.
+ - Some challenges I wanted to tackle were building AI systems, UI, and project architecture.
+ 
+## Project Funtionalities
+ - First person shooter wave based survival combat.
+ - Scavenge for ammo to keep on shooting.
+ - Trek through snowy environment taking cover behind walls to gain an advantage.
+
+## Technical Details
+### Enemy State Machine
  - Implemented a Statemachine that has a dictionary of all its possible states which all derive from a BaseState class.
  - BaseState is an abstract class which has a abstract method called Tick() which is called in the Update method in the StateMachine class.
  - In the Enemy class they have a reference their own StateMachine initializing it with the states it needs. 
- ======
-## Input System
+ 
+### Input System
  - All input in the game is handled with the new Unity InputSystem.
-======
+ 
+### Observer Pattern
+ - Provide some samples of observer pattern code.
+ 
 ## C# Features
  - Use of LINQ, Delegates, Events, Inheritance.
 ![AttackPlayerState](https://user-images.githubusercontent.com/42195958/92345593-cdf2ac00-f07e-11ea-8f1c-0920ad1c2827.png)
 ![BaseState](https://user-images.githubusercontent.com/42195958/92345598-cfbc6f80-f07e-11ea-9c69-9423c1cfa9d9.png)
 ![InitializeStateMachine](https://user-images.githubusercontent.com/42195958/92345606-d4812380-f07e-11ea-80b0-4df319912358.png)
 ![StateMachine](https://user-images.githubusercontent.com/42195958/92345610-d814aa80-f07e-11ea-8079-cf37f69f8c12.png)
+
+## How to use
+ - Download the repo and start the game from the Main scene or Main Menu scene to start the game.
+ - Game may be played with either a controller or keyboard and mouse.
 
 ## Author
 Justin Questroo
