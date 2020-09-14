@@ -23,6 +23,8 @@ public class TakeCoverState : BaseState
             timeInCover += Time.deltaTime;
             if (timeInCover > 3.0f)
             {
+                enemy.currentlyOccupiedWall.IsOccupied = false;
+                enemy.currentlyOccupiedWall = null;
                 Animator.SetBool("Sprinting", false);
                 navMeshAgent.speed = enemy.walkMoveSpeed;
                 return typeof(PeekFromCoverState);
