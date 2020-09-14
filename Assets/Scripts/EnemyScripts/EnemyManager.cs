@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
-    public static bool hasWaveStarted;
     public Text enemiesRemainingText;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Enemy> deadEnemies;
@@ -28,8 +27,26 @@ public class EnemyManager : MonoBehaviour
         {
             PostRoundSummaryManager.Instance.OpenSummary();
             RoundDataManager.Instance.ResetData();
-            hasWaveStarted = false;
         }
         enemiesRemainingText.text = enemies.Count.ToString();
+    }
+
+    private void CleanUpDeadEnemies()
+    {
+        foreach(Enemy enemy in deadEnemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+        deadEnemies.Clear();
+    }
+
+    private void OnEnable()
+    {
+        PostRoundSummaryManager.OnRoundStarted += CleanUpDeadEnemies;
+    }
+
+    private void OnDisable()
+    {
+        PostRoundSummaryManager.OnRoundStarted -= CleanUpDeadEnemies;
     }
 }

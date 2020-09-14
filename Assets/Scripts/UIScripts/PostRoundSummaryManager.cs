@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PostRoundSummaryManager : Singleton<PostRoundSummaryManager>
 {
+    public delegate void RoundStart();
+    public static event RoundStart OnRoundStarted;
+
     public float displayTime = 20.0f;
 
     public GameObject postRoundDataHolder;
@@ -46,6 +49,7 @@ public class PostRoundSummaryManager : Singleton<PostRoundSummaryManager>
     }
     public void StartNewRound()
     {
+        OnRoundStarted?.Invoke();
         FindObjectOfType<SpawnerManager>().SetEnemyCount();
         CloseSummary();
     }

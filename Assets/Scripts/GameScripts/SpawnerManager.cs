@@ -61,13 +61,27 @@ public class SpawnerManager : MonoBehaviour
 
     private void SendSpawnCommand()
     {
-        for (int enemy = 0; enemy < numberToSpawn; ++enemy)
+        //for (int enemy = 0; enemy < numberToSpawn; ++enemy)
+        //{
+        //    int index = Random.Range(0, spawners.Length);
+        //    spawners[index].Spawn();
+        //}
+        popupUIManager.DisplayEventText("Wave " + currentWave + " has started.");
+        StartCoroutine("SpawnCommand");
+    }
+
+    private IEnumerator SpawnCommand()
+    {
+        int numberOfEnemiesToSpawn = numberToSpawn;
+
+        while (numberOfEnemiesToSpawn > 0)
         {
             int index = Random.Range(0, spawners.Length);
             spawners[index].Spawn();
+            FindObjectOfType<EnemyManager>().FindEnemies();
+            numberOfEnemiesToSpawn--;
+            yield return new WaitForSeconds(1.0f);
         }
-        FindObjectOfType<EnemyManager>().FindEnemies();
-        EnemyManager.hasWaveStarted = true;
-        popupUIManager.DisplayEventText("Wave " + currentWave + " has started.");
+
     }
 }

@@ -18,6 +18,8 @@ public class FindNexusState : BaseState
     {
         navMeshAgent.SetDestination(Nexus.transform.position);
         Animator.SetBool("Running", true);
+        Debug.Log(Nexus.transform.position);
+        
         if (enemy.GetHP() <= 0.0f)
         {
             var enemyColliders = enemy.GetComponentsInChildren<Collider>();

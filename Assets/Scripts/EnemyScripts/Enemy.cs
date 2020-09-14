@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
@@ -41,6 +42,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Gizmos.DrawLine(transform.position, Target.position);
         }
+        Gizmos.DrawLine(transform.position, GetComponent<NavMeshAgent>().destination);
     }
 
     private void Update()
