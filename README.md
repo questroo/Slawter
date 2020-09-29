@@ -19,7 +19,7 @@
 ![Enemy](https://user-images.githubusercontent.com/42195958/92343014-71d85980-f077-11ea-9223-457a93402b34.png)
 ======
  
-## Project Funtionalities
+## Project Functionalities
  - First person shooter wave based survival combat.
  - Scavenge for ammo to keep on shooting.
  - Trek through snowy environment taking cover behind walls to gain an advantage.
@@ -32,9 +32,6 @@
  
 ### Input System
  - All input in the game is handled with the new Unity InputSystem.
- 
-### Observer Pattern
- - Provide some samples of observer pattern code.
  
 ## C# Features
  - Use of LINQ, Delegates, Events, Inheritance.
