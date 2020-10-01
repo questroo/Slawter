@@ -29,13 +29,14 @@ public class PeekFromCoverState : BaseState
         }
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(enemy.shootFromPosition.position, (Player.transform.position - enemy.shootFromPosition.position).normalized);
-        var distance = Vector3.Distance(enemy.shootFromPosition.position, Player.transform.position)*1.2f;
+        var distance = Vector3.Distance(enemy.shootFromPosition.position, Player.transform.position);
         if (Physics.Raycast(ray, out hit, distance))
         {
-            if(hit.collider.transform.GetComponent<PlayerMovement>())
+            if (hit.collider.transform.GetComponent<PlayerMovement>())
             {
                 enemy.SetTarget(Player.transform);
                 Animator.SetBool("Running", false);
+                Animator.SetBool("TakeCover", false);
                 Animator.SetBool("Shooting", true);
                 return typeof(AttackPlayerState);
             }

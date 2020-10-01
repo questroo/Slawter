@@ -12,6 +12,7 @@ public class PostRoundSummaryManager : Singleton<PostRoundSummaryManager>
     public float displayTime = 20.0f;
 
     public GameObject postRoundDataHolder;
+    public GameObject victoryScreenHolder;
     public Text scoreText;
     public Text headshotText;
     public Text killsText;
@@ -34,8 +35,25 @@ public class PostRoundSummaryManager : Singleton<PostRoundSummaryManager>
     public void OpenSummary()
     {
         postRoundDataHolder.SetActive(true);
+        BringUpCursor();
+        ResetScore();
+    }
+
+    public void Victory()
+    {
+        victoryScreenHolder.SetActive(true);
+        BringUpCursor();
+        ResetScore();
+    }
+
+    private void BringUpCursor()
+    {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+    }
+
+    private void ResetScore()
+    {
         SetScore();
         SetHeadshots();
         SetKills();

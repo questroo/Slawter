@@ -34,11 +34,12 @@ public abstract class Enemy : MonoBehaviour
         healthSlider.maxValue = hp.maxHP;
         healthSlider.value = currentHP;
         healthSlider.gameObject.SetActive(false);
+        RegisterToDamageIndicator();
     }
 
     private void OnDrawGizmos()
     {
-        if(Target)
+        if (Target)
         {
             Gizmos.DrawLine(transform.position, Target.position);
         }
@@ -71,7 +72,7 @@ public abstract class Enemy : MonoBehaviour
     public void SetTarget(Transform target)
     {
         Target = target;
-        
+
         if (Target)
         {
             InvokeRepeating("Attack", attackRate, attackRate);
@@ -134,9 +135,9 @@ public abstract class Enemy : MonoBehaviour
     }
     void RegisterToDamageIndicator()
     {
-        if (!DamageIndicatorSystem.CheckIfObjectInSight(this.transform))
-        {
+        //if (!DamageIndicatorSystem.CheckIfObjectInSight(this.transform))
+        //{
             DamageIndicatorSystem.CreateIndicator(this.transform);
-        }
+        //}
     }
 }

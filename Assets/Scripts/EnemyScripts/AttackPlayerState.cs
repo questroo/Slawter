@@ -15,6 +15,7 @@ public class AttackPlayerState : BaseState
 
     public override Type Tick()
     {
+        Animator.SetBool("TakeCover", false);
         navMeshAgent.transform.LookAt(new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z));
         if (enemy.GetHP() <= 0.0f)
         {
@@ -36,6 +37,7 @@ public class AttackPlayerState : BaseState
             {
                 enemy.SetTarget(Player.transform);
             }
+            navMeshAgent.speed = enemy.walkMoveSpeed;
             navMeshAgent.isStopped = true;
         }
         if (Vector3.Distance(transform.position, Player.transform.position) > enemy.ranges.attackRange &&
@@ -44,6 +46,7 @@ public class AttackPlayerState : BaseState
             Animator.SetBool("Running", true);
             Animator.SetBool("Shooting", false);
             enemy.SetTarget(null);
+            navMeshAgent.speed = enemy.runMoveSpeed;
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(Player.transform.position);
         }

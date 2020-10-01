@@ -70,6 +70,10 @@ public class SpawnerManager : MonoBehaviour
         StartCoroutine("SpawnCommand");
     }
 
+    public int GetCurrentWave()
+    {
+        return currentWave;
+    }
     private IEnumerator SpawnCommand()
     {
         int numberOfEnemiesToSpawn = numberToSpawn;

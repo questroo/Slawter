@@ -25,7 +25,14 @@ public class EnemyManager : MonoBehaviour
         deadEnemies.Add(me);
         if (enemies.Count <= 0)
         {
-            PostRoundSummaryManager.Instance.OpenSummary();
+            if (FindObjectOfType<SpawnerManager>().GetCurrentWave() >= 9)
+            {
+                PostRoundSummaryManager.Instance.Victory();
+            }
+            else
+            {
+                PostRoundSummaryManager.Instance.OpenSummary();
+            }
             RoundDataManager.Instance.ResetData();
         }
         enemiesRemainingText.text = enemies.Count.ToString();
@@ -33,7 +40,7 @@ public class EnemyManager : MonoBehaviour
 
     private void CleanUpDeadEnemies()
     {
-        foreach(Enemy enemy in deadEnemies)
+        foreach (Enemy enemy in deadEnemies)
         {
             Destroy(enemy.gameObject);
         }
